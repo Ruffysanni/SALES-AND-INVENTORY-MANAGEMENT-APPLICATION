@@ -20,7 +20,7 @@ public class Receipts {
     public Receipts() {
     };
 
-    public Receipts(String receiptDate, int amount, Sales sales) {
+    public Receipts(String receiptDate, double amount, Sales sales) {
         this.receiptDate = receiptDate;
         this.amount = amount;
         this.sales = sales;
@@ -34,7 +34,7 @@ public class Receipts {
         return receiptDate;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
