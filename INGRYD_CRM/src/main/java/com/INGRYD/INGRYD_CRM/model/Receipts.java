@@ -7,7 +7,7 @@ public class Receipts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "receipt_id")
-    private int id;
+    private Long id;
 
     private String receiptDate;
 
@@ -20,13 +20,13 @@ public class Receipts {
     public Receipts() {
     };
 
-    public Receipts(String receiptDate, double amount, Sales sales) {
+    public Receipts(String receiptDate, Double amount, Sales sales) {
         this.receiptDate = receiptDate;
         this.amount = amount;
         this.sales = sales;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -34,7 +34,7 @@ public class Receipts {
         return receiptDate;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 

@@ -12,7 +12,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private int id;
+    private Long id;
 
 //    @NotBlank
 //    @Length(min = 3)
@@ -47,7 +47,7 @@ public class Customer {
         this.address = address;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
