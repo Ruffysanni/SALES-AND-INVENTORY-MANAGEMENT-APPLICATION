@@ -11,14 +11,14 @@ public class Receipts {
 
     private String receiptDate;
 
-    private int amount;
+    private Double amount;
 
     @ManyToOne
     @JoinColumn(name = "sales_id")
     private Sales sales;
 
     public Receipts() {
-    }
+    };
 
     public Receipts(String receiptDate, int amount, Sales sales) {
         this.receiptDate = receiptDate;
