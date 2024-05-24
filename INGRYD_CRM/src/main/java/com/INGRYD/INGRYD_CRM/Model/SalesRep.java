@@ -28,7 +28,7 @@ public class SalesRep {
     @NotNull
     @NotBlank(message = "phone number is mandatory")
     @Pattern(regexp = "^\\+234(80|70|90|81)\\d{8}$|^(080|070|090|081)\\d{8}$",
-            message = "Invalid phone number format")
+            message = "Invalid phone number format, phone number must start with +23480,23481,23470,23490 or 080,081,070,090")
     private String phoneNumber;
     @NotNull
     @NotBlank(message = "Password must contain a minimum of 8 and a maximum of 13 characters")
