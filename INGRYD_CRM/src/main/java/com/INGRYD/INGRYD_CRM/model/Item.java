@@ -1,4 +1,4 @@
-package model;
+package com.INGRYD.INGRYD_CRM.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,6 +41,7 @@ public class Item {
 
     @NotBlank
     @NotNull
+
     private Product product;
 
     public Item() {

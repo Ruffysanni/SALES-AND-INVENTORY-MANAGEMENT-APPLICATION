@@ -1,4 +1,4 @@
-package model;
+package com.INGRYD.INGRYD_CRM.model;
 
 import com.fasterxml.jackson.annotation.JsonTypeId;
 import jakarta.persistence.Entity;
@@ -18,7 +18,7 @@ public class Product {
 
     @NotNull
     @NotBlank
-    private String name;
+    private String productName;
 
     @NotNull
     @NotBlank
@@ -31,10 +31,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long product_id, Long category_id, String name, String description, Double price, Category category) {
+    public Product(Long product_id, Long category_id, String productName, String description, Double price, Category category) {
         this.product_id = product_id;
         this.category_id = category_id;
-        this.name = name;
+        this.productName = productName;
         this.description = description;
         this.price = price;
         this.category = category;
@@ -44,12 +44,12 @@ public class Product {
         return product_id;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getDescription() {
