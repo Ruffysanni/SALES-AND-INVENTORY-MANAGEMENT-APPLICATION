@@ -37,6 +37,8 @@ public class Invoice {
     @Temporal(TemporalType.DATE)
     private Date dueDate;
 
+    // create constructors
+
     public Invoice(long id, Date invoiceDate, double amountDue, Date dueDate) {
         this.id = id;
         this.invoiceDate = invoiceDate;
@@ -48,6 +50,8 @@ public class Invoice {
 
     }
 
+
+    // create getters and setters
     public long getId() {
         return id;
     }
