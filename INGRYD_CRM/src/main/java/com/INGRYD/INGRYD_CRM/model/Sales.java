@@ -8,14 +8,10 @@ import java.util.List;
 @Entity(name = "sales_table")
 public class Sales {
 
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sale_id")
     private Long id;
-
 
     @Column(nullable = false)
     private String customerId;
