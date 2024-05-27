@@ -37,7 +37,7 @@ public class Customer {
 
     @NotBlank
     @Null
-    @Size(min = 2, max = 100, message = "Address must be more than 2, and less than 100 characters")
+    @Size(min = 3, max = 100, message = "Address must be more than 2, and less than 100 characters")
     private String address;
 
     public Customer() {}
