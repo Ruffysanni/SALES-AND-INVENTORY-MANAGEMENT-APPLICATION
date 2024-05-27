@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReceiptsRepository extends JpaRepository<Receipts, Long> {
-  Receipts findByReceiptId(Long id);
+    Receipts findByReceiptId(Long id);
 }
