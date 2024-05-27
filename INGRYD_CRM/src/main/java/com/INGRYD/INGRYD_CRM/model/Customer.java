@@ -40,7 +40,8 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer(String name, String email, String phoneNumber, String address) {
+    public Customer(Long id, String name, String email, String phoneNumber, String address) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;

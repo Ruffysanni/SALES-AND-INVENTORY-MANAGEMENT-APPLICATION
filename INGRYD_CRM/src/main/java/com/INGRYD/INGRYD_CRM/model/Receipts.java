@@ -20,7 +20,8 @@ public class Receipts {
     public Receipts() {
     };
 
-    public Receipts(String receiptDate, Double amount, Sales sales) {
+    public Receipts(Long id, String receiptDate, Double amount, Sales sales) {
+        this.id = id;
         this.receiptDate = receiptDate;
         this.amount = amount;
         this.sales = sales;
