@@ -1,6 +1,10 @@
 package com.INGRYD.INGRYD_CRM.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Entity(name = "receipts_table")
 public class Receipts {
@@ -9,8 +13,16 @@ public class Receipts {
     @Column(name = "receipt_id")
     private Long id;
 
+    @NotEmpty
+    @NotBlank(message = "Receipt date is mandatory")
+    @NotNull
+    @Temporal(TemporalType.DATE)
     private String receiptDate;
 
+    @NotEmpty
+    @NotBlank(message = "amount is mandatory")
+    @NotNull
+    @Positive(message = "Amount due must be positive")
     private Double amount;
 
     @ManyToOne
@@ -18,7 +30,9 @@ public class Receipts {
     private Sales sales;
 
     public Receipts() {
-    };
+    }
+
+    ;
 
     public Receipts(Long id, String receiptDate, Double amount, Sales sales) {
         this.id = id;
