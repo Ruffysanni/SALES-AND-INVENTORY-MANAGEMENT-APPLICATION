@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="Created the repository interfaces for the SalesRep and invoice model classes" />
+    <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="committing to main branch" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,10 +26,20 @@
     </configuration>
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="committing to main branch">
+      <option name="closed" value="true" />
+      <created>1716816152177</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716816152177</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created the repository interfaces for the SalesRep and invoice model classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the repository interfaces for the SalesRep and invoice model classes" />
+    <MESSAGE value="committing to main branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="committing to main branch" />
   </component>
 </project>
