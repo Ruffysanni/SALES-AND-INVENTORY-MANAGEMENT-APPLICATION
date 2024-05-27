@@ -4,88 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="908edf8f-90a3-48f6-84ae-457d708bdb74" name="Changes" comment="Created the repository interfaces for the SalesRep and invoice model classes">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/SALES-AND-INVENTORY-MANAGEMENT-APPLICATION.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Model/Invoice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Model/SalesRep.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Repository/InvoiceRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Repository/SalesRepRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log/logger.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="Created the repository interfaces for the SalesRep and invoice model classes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;CHARLE123455&quot;
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Ruffysanni/SALES-AND-INVENTORY-MANAGEMENT-APPLICATION.git&quot;,
-    &quot;accountId&quot;: &quot;04ea45a5-a33b-4387-981c-e64a819ff9db&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2gt3FFqWT2FEFjcChukOTynOe5Y" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.IngrydCrmApplication.executor": "Run",
-    "git-widget-placeholder": "Merging main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ETC/Desktop/TutorialApp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
-    ]
-  }
-}]]></component>
   <component name="RunManager">
     <configuration name="IngrydCrmApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="INGRYD_CRM" />
@@ -95,70 +25,10 @@
       </method>
     </configuration>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="908edf8f-90a3-48f6-84ae-457d708bdb74" name="Changes" comment="" />
-      <created>1716502943811</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1716502943811</updated>
-      <workItem from="1716502945634" duration="325000" />
-      <workItem from="1716526528265" duration="7978000" />
-      <workItem from="1716719145934" duration="2839000" />
-      <workItem from="1716808103207" duration="36000" />
-      <workItem from="1716812537782" duration="1955000" />
-    </task>
-    <task id="LOCAL-00001" summary="created the Sales rep Entity model for the application in development">
-      <option name="closed" value="true" />
-      <created>1716576068085</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1716576068085</updated>
-    </task>
-    <task id="LOCAL-00002" summary="created the Invoice Entity model for the application in development, and made changes to the toString method in the SalesRep.java model">
-      <option name="closed" value="true" />
-      <created>1716577161852</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1716577161852</updated>
-    </task>
-    <task id="LOCAL-00003" summary="pushing regex message update SalesRep.java model">
-      <option name="closed" value="true" />
-      <created>1716577429641</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1716577429641</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Created the repository interfaces for the SalesRep and invoice model classes">
-      <option name="closed" value="true" />
-      <created>1716720798142</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1716720798142</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="created the Sales rep Entity model for the application in development" />
-    <MESSAGE value="created the Invoice Entity model for the application in development, and made changes to the toString method in the SalesRep.java model" />
-    <MESSAGE value="pushing regex message update SalesRep.java model" />
     <MESSAGE value="Created the repository interfaces for the SalesRep and invoice model classes" />
     <option name="LAST_COMMIT_MESSAGE" value="Created the repository interfaces for the SalesRep and invoice model classes" />
   </component>
