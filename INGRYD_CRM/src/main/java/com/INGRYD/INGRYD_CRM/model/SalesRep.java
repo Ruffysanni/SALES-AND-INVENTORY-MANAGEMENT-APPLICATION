@@ -1,4 +1,4 @@
-package com.INGRYD.INGRYD_CRM.Model;
+package com.INGRYD.INGRYD_CRM.model;
 
 
 import jakarta.persistence.*;

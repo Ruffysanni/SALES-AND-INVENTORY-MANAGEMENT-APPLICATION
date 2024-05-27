@@ -1,12 +1,11 @@
-package com.INGRYD.INGRYD_CRM.Repository;
+package com.INGRYD.INGRYD_CRM.repository;
 
-import com.INGRYD.INGRYD_CRM.Model.Invoice;
+import com.INGRYD.INGRYD_CRM.model.Invoice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 
 @Repository

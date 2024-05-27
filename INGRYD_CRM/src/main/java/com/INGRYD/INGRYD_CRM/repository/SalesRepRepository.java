@@ -1,6 +1,6 @@
-package com.INGRYD.INGRYD_CRM.Repository;
+package com.INGRYD.INGRYD_CRM.repository;
 
-import com.INGRYD.INGRYD_CRM.Model.SalesRep;
+import com.INGRYD.INGRYD_CRM.model.SalesRep;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
