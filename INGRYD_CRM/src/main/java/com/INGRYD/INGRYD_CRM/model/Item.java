@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
+
 @Entity(name = "_items_table")
 public class Item {
     /*
@@ -37,12 +39,12 @@ public class Item {
 
     @NotBlank
     @NotNull
-    private Sale sale;
+    private List<Sale> sale;
 
     @NotBlank
     @NotNull
 
-    private Product product;
+    private List<Product> product;
 
     public Item() {
     }
