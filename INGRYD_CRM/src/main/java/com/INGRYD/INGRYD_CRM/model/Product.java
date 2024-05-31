@@ -1,6 +1,5 @@
 package com.INGRYD.INGRYD_CRM.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -40,7 +39,7 @@ public class Product {
         this.category = category;
     }
 
-    public Long getProduct_id() {
+    public Product getProduct_id() {
         return product_id;
     }
 
