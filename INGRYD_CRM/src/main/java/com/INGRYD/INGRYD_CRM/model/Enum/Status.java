@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum Status {
-    IN_STOCK,
+    AVAILABLE_IN_STOCK,
     LOW_STOCK,
     OUT_OF_STOCK,
     NOT_AVAILABLE

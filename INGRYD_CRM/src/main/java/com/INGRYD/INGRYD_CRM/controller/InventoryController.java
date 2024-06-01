@@ -31,7 +31,7 @@ public class InventoryController {
     }
     @PostMapping("/post_inventory")
     public ResponseEntity<Inventory> postNewInventory(@RequestBody @Valid int stockQuantity, Product product) {
-        return inventoryService.createInventory(stockQuantity, product);
+        return inventoryService.createInventory(stockQuantity, product.getProduct_id());
     }
     @PutMapping("/update_inventory/{id}")
     public ResponseEntity<Inventory> updateInventory(@PathVariable long id, @Valid @RequestBody Inventory updatedInventory) {

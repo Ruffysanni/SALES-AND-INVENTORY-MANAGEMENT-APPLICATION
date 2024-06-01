@@ -28,15 +28,15 @@ public class InventoryService {
     }
 
     public ResponseEntity<List<Inventory>> getInventoryByProduct(Product product) {
-        return new ResponseEntity<>(inventoryRepository.findByProduct(product), HttpStatus.OK);
+        return new ResponseEntity<>(inventoryRepository.findByProduct(product.getProduct_id()), HttpStatus.OK);
     }
 
     public ResponseEntity<Inventory> createInventory(int stockQuantity, Product product) {
         Inventory inventory = new Inventory();
         inventory.setStockQuantity(stockQuantity);
         inventory.setRemainingQuantity(stockQuantity);
-        inventory.setStatus(Status.IN_STOCK);
-        inventory.setProduct(product);
+        inventory.setStatus(Status.AVAILABLE_IN_STOCK);
+        inventory.setProduct(product.getProduct_id());
         return new ResponseEntity<>(inventoryRepository.save(inventory), HttpStatus.CREATED);
     }
 
@@ -44,7 +44,7 @@ public class InventoryService {
         Inventory existingInventory = inventoryRepository.findById(id).orElseThrow();
         existingInventory.setStockQuantity(updatedInventory.getStockQuantity());
         existingInventory.setRemainingQuantity(updatedInventory.getRemainingQuantity());
-        existingInventory.setStatus(Status.IN_STOCK);
+        existingInventory.setStatus(Status.AVAILABLE_IN_STOCK);
         return new ResponseEntity<>(inventoryRepository.save(existingInventory), HttpStatus.ACCEPTED);
     }
 
@@ -72,7 +72,7 @@ public class InventoryService {
                     inventory.setStatus(Status.OUT_OF_STOCK);
                 }
                 inventoryRepository.save(inventory);
-            } 
+            }
         }
         return ResponseEntity.ok("Successful");
     }
