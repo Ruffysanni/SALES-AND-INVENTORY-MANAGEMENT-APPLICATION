@@ -1,17 +1,13 @@
 package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.Invoice;
 import com.INGRYD.INGRYD_CRM.repository.InvoiceRepository;
-import jakarta.annotation.Resource;
 import org.hibernate.service.spi.ServiceException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@Component
-@Resource
 @Transactional
 public class InvoiceService {
     final InvoiceRepository invoiceRepository;

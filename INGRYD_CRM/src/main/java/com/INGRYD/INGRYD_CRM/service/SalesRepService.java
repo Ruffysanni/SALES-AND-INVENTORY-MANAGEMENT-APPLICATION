@@ -24,10 +24,6 @@ public class SalesRepService {
         this.invoiceRepository = invoiceRepository;
     }
 
-    public List<SalesRep> getAllSalesRep() {
-        return salesRepRepository.findAll();
-    }
-
     public SalesRep addSalesRep(SalesRep salesRep) {
         return salesRepRepository.save(salesRep);
     }

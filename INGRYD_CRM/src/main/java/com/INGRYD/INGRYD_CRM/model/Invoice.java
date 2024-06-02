@@ -17,15 +17,14 @@ public class Invoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "Sales_Invoice")
+    @Column (name = "Sales_Id")
     private long id;
 
     @NotEmpty
-    @NotBlank(message = "invoice date  is mandatory")
     @NotNull
     @Temporal(TemporalType.DATE)
     private Date invoiceDate;
-    @NotEmpty
+
     @NotBlank(message = "amount due is mandatory")
     @NotNull
     @Positive(message = "Amount due must be positive")
