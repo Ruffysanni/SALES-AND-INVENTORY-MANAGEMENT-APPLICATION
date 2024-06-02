@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/SalesRep")
+@CrossOrigin
 public class SalesRepController {
 // Autowire Sales Representatives Repository,and Sales Representatives Service
     final SalesRepService salesRepService;

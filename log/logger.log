@@ -1940,3 +1940,6 @@ List of constraint violations:[
 
 2024-06-02T15:20:45.297+01:00  WARN 2400 --- [INGRYD_CRM] [http-nio-9009-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' is not supported]
 2024-06-02T15:21:18.509+01:00  WARN 2400 --- [INGRYD_CRM] [http-nio-9009-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.INGRYD.INGRYD_CRM.model.SalesRep com.INGRYD.INGRYD_CRM.controller.SalesRepController.deleteSalesRep(long,com.INGRYD.INGRYD_CRM.model.SalesRep)]
+2024-06-02T15:48:01.250+01:00  INFO 2400 --- [INGRYD_CRM] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-02T15:48:01.250+01:00  INFO 2400 --- [INGRYD_CRM] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-02T15:48:01.281+01:00  INFO 2400 --- [INGRYD_CRM] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
