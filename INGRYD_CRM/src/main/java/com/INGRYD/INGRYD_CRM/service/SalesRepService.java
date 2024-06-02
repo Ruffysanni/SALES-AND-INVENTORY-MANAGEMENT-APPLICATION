@@ -2,17 +2,13 @@ package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.SalesRep;
 import com.INGRYD.INGRYD_CRM.repository.InvoiceRepository;
 import com.INGRYD.INGRYD_CRM.repository.SalesRepRepository;
-import jakarta.annotation.Resource;
 import org.hibernate.service.spi.ServiceException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Component
-@Resource
 @Transactional
 public class SalesRepService {
 
