@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @Data
-@RequestMapping("/sales_management")
+@RequestMapping("/api/v1/inventory")
 public class InventoryController {
     @Autowired
     private InventoryService inventoryService;
