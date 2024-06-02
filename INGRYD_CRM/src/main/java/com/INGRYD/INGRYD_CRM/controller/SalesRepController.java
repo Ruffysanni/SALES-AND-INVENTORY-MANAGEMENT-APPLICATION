@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/vi/SalesRep")
+@RequestMapping("/api/v1/SalesRep")
 public class SalesRepController {
 // Autowire Sales Representatives Repository,and Sales Representatives Service
     final SalesRepService salesRepService;

@@ -2,8 +2,11 @@ package com.INGRYD.INGRYD_CRM.controller;
 import com.INGRYD.INGRYD_CRM.model.Invoice;
 import com.INGRYD.INGRYD_CRM.repository.InvoiceRepository;
 import com.INGRYD.INGRYD_CRM.service.InvoiceService;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -30,8 +33,11 @@ public class InvoiceController {
     }
 // Delete mapping to delete an invoice
     @DeleteMapping("/delete/{id}")
-    public void deleteInvoice(@PathVariable Long id){
+    public ResponseEntity<Void> deleteInvoice(@PathVariable Long id){
         invoiceService.deleteInvoice(id);
+        return ResponseEntity.noContent()
+                .header("Location", "/api/v1/invoices")
+                .build();
     }
 // Get mapping to fetch all the invoices
     @GetMapping("/getAll")
@@ -42,5 +48,11 @@ public class InvoiceController {
     @GetMapping("/details/{id}")
     public Invoice getInvoiceDetails(@PathVariable long id){
         return invoiceService.getInvoiceDetails(id);
+    }
+// Get mapping to fetch invoices by date range
+    @GetMapping("/find-by-date-range")
+    public List<Invoice> findInvoiceByDateRange(@RequestParam("startDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate startDate,
+                                                @RequestParam("endDate") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate endDate){
+        return invoiceService.findInvoicesByDateRange(startDate,endDate);
     }
 }

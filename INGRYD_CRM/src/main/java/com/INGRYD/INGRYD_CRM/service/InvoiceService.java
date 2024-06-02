@@ -5,6 +5,8 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -34,6 +36,15 @@ public class InvoiceService {
     }
     public List<Invoice> getAllInvoices() {
         return invoiceRepository.findAll();
+    }
+    public List<Invoice> findInvoicesByDateRange(LocalDate startDate,LocalDate endDate) {
+        if(startDate == null || endDate == null) {
+            throw new ServiceException("Date range cannot be empty");
+        }
+        if(startDate.isAfter(endDate)) {
+            throw new ServiceException("Start date cannot be after end date");
+        }
+        return invoiceRepository.findByDateBetween(startDate,endDate);
     }
     public void deleteInvoice(Long id) {
         if (!invoiceRepository.existsById(id)) {
