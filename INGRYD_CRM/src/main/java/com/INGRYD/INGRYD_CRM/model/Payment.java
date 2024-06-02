@@ -23,20 +23,20 @@ public class Payment {
     private String paymentMethod;
 
     @Column(nullable = false)
-    private Long salesId;
+    private Long saleId;
 
     @ManyToOne
     @JoinColumn(name = "sales_id", nullable = false)
-    private Sales sales;
+    private Sale sale;
 
 
 
-    public Payment(Long id, LocalDate paymentDate, Double amount, String paymentMethod, Long salesId) {
+    public Payment(Long id, LocalDate paymentDate, Double amount, String paymentMethod, Long saleId) {
         this.id = id;
         this.paymentDate = paymentDate;
         this.amount = amount;
         this.paymentMethod = paymentMethod;
-        this.salesId = salesId;
+        this.saleId = saleId;
     }
 
     public Long getId() {
@@ -68,12 +68,12 @@ public class Payment {
         this.paymentMethod = paymentMethod;
     }
 
-    public Long getSalesId() {
-        return salesId;
+    public Long getSaleId() {
+        return saleId;
     }
 
-    public void setSalesId(Long salesId) {
-        this.salesId = salesId;
+    public void setSaleId(Long saleId) {
+        this.saleId = saleId;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class Payment {
                 ", paymentDate=" + paymentDate +
                 ", amount=" + amount +
                 ", paymentMethod='" + paymentMethod + '\'' +
-                ", salesId=" + salesId +
+                ", salesId=" + saleId +
                 '}';
     }
 }
