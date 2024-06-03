@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +33,15 @@ public class ReceiptsController {
     //Create a new Receipt
     @PostMapping
     @Transactional
-    public ResponseEntity<Receipts> createReceipt (Payment payment){
+    public ResponseEntity<Receipts> createReceipt (@RequestBody Payment payment){
         return receiptsService.createReceipt(payment);
     }
+
+    //Get Receipts by Date Range
+    @GetMapping("/date-range")
+    public ResponseEntity<List<Receipts>> getReceiptsByDateRange(@RequestParam LocalDate startDate, LocalDate endDate){
+        return receiptsService.getReceiptsByDateRange(startDate,endDate);
+    }
+
 
 }
