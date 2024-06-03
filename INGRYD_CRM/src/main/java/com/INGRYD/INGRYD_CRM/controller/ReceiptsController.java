@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/ingryd_crm/receipts")
+@RequestMapping("/api/v1/receipts")
 public class ReceiptsController {
     @Autowired
     private ReceiptsService receiptsService;

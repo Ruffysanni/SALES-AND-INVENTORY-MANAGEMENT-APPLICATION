@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/ingryd_crm/customers")
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
@@ -43,7 +43,7 @@ public class CustomerController {
 
     //deleteCustomer
     @DeleteMapping("/{id}")
-    public ResponseEntity<Customer> deleteCustomer(Long id){
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable Long id){
         return customerService.deleteCustomer(id);
     }
 }
