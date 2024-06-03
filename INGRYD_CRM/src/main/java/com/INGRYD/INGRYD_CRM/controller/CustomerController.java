@@ -16,7 +16,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     //Get all Customers
-    @GetMapping("")
+    @GetMapping("/all")
     public ResponseEntity<List<Customer>> getAllCustomer () {
         return  customerService.getAllCustomer();
     }

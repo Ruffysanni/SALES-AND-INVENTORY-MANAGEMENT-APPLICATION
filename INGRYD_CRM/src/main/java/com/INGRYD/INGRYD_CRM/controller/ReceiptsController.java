@@ -19,7 +19,7 @@ public class ReceiptsController {
     private ReceiptsService receiptsService;
 
     //Get all Receipts
-    @GetMapping("")
+    @GetMapping("/all")
     public ResponseEntity<List<Receipts>> getAllReceipts(){
         return receiptsService.getAllReceipts();
     }
