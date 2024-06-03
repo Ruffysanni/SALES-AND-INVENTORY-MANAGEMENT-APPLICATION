@@ -1,9 +1,6 @@
 package com.INGRYD.INGRYD_CRM.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,23 +8,16 @@ import java.util.List;
 
 @Entity(name = "_items_table")
 public class Item {
-    /*
-        -	item_id (Primary Key)
-        -	sale_id (Foreign key to sale)
-        -	product_id (Foreign key to product)
-        -	quantity
-        -	unitPrice
-    * */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long item_id;
 
-    @NotBlank
-    @NotNull
-    private Long sale_id;
-    @NotBlank
-    @NotNull
-    private Long product_id;
+//    @NotBlank
+//    @NotNull
+//    private Long sale_id;
+//    @NotBlank
+//    @NotNull
+//    private Long product_id;
 
     @NotBlank
     @NotNull
@@ -37,13 +27,12 @@ public class Item {
     @NotNull
     private Double unitPrice;
 
-    @NotBlank
-    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "sale_id")
     private List<Sale> sale;
 
-    @NotBlank
-    @NotNull
-
+    @OneToOne
+    @JoinColumn(name = "product_id")
     private List<Product> product;
 
     public Item() {
