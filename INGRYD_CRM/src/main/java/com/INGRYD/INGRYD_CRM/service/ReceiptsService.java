@@ -44,19 +44,11 @@ public class ReceiptsService {
     public ResponseEntity<Receipts> createReceipt(Payment payment) {
         paymentService.createPayment(payment);
         Receipts receipts = new Receipts();
+
         Receipts savedReceipt = receiptsRepository.save(receipts);
         return new ResponseEntity<>(savedReceipt, HttpStatus.CREATED);
     }
 
-//    //Update an existing Receipt
-//    public ResponseEntity<Receipts> updateReceipt(Long id, Receipts receiptsDetails){
-//        Optional<Receipts> receipts = receiptsRepository.findById(id);
-//        if(receipts.isPresent()){
-//            Receipts receiptsToUpdate = receipts.get();
-//            receiptsToUpdate.
-//
-//        }
-//    }
 
     //Get Receipts by Date Range
     public ResponseEntity<List<Receipts>> getReceiptsByDateRange(LocalDate startDate, LocalDate endDate) {

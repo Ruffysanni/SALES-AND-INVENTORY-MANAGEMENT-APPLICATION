@@ -23,23 +23,23 @@ public class CustomerService {
     }
 
     //getCustomerById
-    public ResponseEntity<Customer> getCustomerById (@PathVariable Long id){
+    public ResponseEntity<Customer> getCustomerById (Long id){
         return new ResponseEntity<>(customerRepository.findById(id).get(), HttpStatus.OK);
     }
     //getCustomerName
-    public ResponseEntity<Customer> getCustomerName(@RequestParam String name){
+    public ResponseEntity<Customer> getCustomerName(String name){
         return new ResponseEntity<>(customerRepository.findByCustomerName(name), HttpStatus.OK);
     }
 
     //postCustomer
-    public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer){
+    public ResponseEntity<Customer> postCustomer(Customer customer){
         Customer savedCustomer = customerRepository.save(customer);
 
         return  new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
     }
 
     //updateCustomer
-    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, Customer replacementDetails){
+    public ResponseEntity<Customer> updateCustomer(Long id, Customer replacementDetails){
         Customer customer = customerRepository.findById(id).get();
         customer.setName(replacementDetails.getName());
         customer.setEmail(replacementDetails.getEmail());
