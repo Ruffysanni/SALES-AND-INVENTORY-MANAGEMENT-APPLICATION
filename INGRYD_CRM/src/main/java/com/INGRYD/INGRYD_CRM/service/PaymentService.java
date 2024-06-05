@@ -1,17 +1,16 @@
 package com.INGRYD.INGRYD_CRM.service;
-
-
 import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.repository.PaymentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class PaymentService {
 
     private final PaymentRepository paymentRepository;
@@ -29,7 +28,7 @@ public class PaymentService {
     // Get Payment by ID
     public ResponseEntity<Payment> getPaymentById(Long id) {
         Optional<Payment> payment = paymentRepository.findById(id);
-        return payment.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());// this is the same as saying  if(payment.isEmpty()) {return ResponseEntity.notFound().build();
+        return payment.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());// this is the same as saying if(payment.isEmpty()) {return ResponseEntity.notFound().build();
     }
 
     // Create a new Payment

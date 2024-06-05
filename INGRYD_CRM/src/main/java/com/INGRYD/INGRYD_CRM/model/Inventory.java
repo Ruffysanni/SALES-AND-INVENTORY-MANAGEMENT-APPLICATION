@@ -4,7 +4,9 @@ import com.INGRYD.INGRYD_CRM.model.Enum.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
+@Data
 @Entity(name = "inventory_table")
 public class Inventory {
     @Id
@@ -23,8 +25,6 @@ public class Inventory {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    public Inventory() {}
-
     public Inventory(Long id, Product product, int stockQuantity, int remainingQuantity, Status status) {
         this.id = id;
         this.product = product;
@@ -33,19 +33,23 @@ public class Inventory {
         this.status = status;
     }
 
+    public Inventory() {
+
+    }
+
     public Long getId() {
         return id;
     }
-/*
-//    public void setId(Long id) {
-//        this.id = id;
-    }*/
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Product getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(Long product) {
         this.product = product;
     }
 
@@ -71,16 +75,5 @@ public class Inventory {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Inventory{" +
-                "id=" + id +
-                ", product=" + product +
-                ", stockQuantity=" + stockQuantity +
-                ", remainingQuantity=" + remainingQuantity +
-                ", status=" + status +
-                '}';
     }
 }

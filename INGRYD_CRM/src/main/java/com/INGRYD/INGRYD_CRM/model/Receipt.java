@@ -5,9 +5,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.*;
 
+@Data
 @Entity(name = "receipts_table")
-public class Receipts {
+
+public class Receipt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "receipt_id")
@@ -31,53 +34,56 @@ public class Receipts {
     @JoinColumn(name = "sales_id")
     private Sale sale;
 
-    public Receipts() {
-    }
-
-    ;
-
-
-    public Receipts(Long id, String receiptDate, Double amount, String narration, Sales sales) {
+    public Receipt(Long id, String receiptDate, Double amount, String narration, Sale sale) {
         this.id = id;
         this.receiptDate = receiptDate;
         this.amount = amount;
         this.narration = narration;
-        this.sales = sales;
-
-    public Receipts(Long id, String receiptDate, Double amount, Sale sale) {
-        this.id = id;
-        this.receiptDate = receiptDate;
-        this.amount = amount;
         this.sale = sale;
+    }
+
+    public Receipt() {
+
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getReceiptDate() {
         return receiptDate;
+    }
+
+    public void setReceiptDate(String receiptDate) {
+        this.receiptDate = receiptDate;
     }
 
     public Double getAmount() {
         return amount;
     }
 
-    public String getNarration(){return narration;}
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
 
-    public Sales getSales() {
-        return sales;
-    public Sale getSales() {
+    public String getNarration() {
+        return narration;
+    }
+
+    public void setNarration(String narration) {
+        this.narration = narration;
+    }
+
+    public Sale getSale() {
         return sale;
-
     }
 
-    @Override
-    public String toString() {
-        return "Receipts{" +
-                "receiptDate='" + receiptDate + '\'' +
-                ", amount=" + amount +
-                ", sale=" + sale +
-                '}';
+    public void setSale(Sale sale) {
+        this.sale = sale;
     }
+
 }

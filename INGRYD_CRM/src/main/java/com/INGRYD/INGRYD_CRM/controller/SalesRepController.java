@@ -3,7 +3,6 @@ import com.INGRYD.INGRYD_CRM.model.SalesRep;
 import com.INGRYD.INGRYD_CRM.repository.SalesRepRepository;
 import com.INGRYD.INGRYD_CRM.service.SalesRepService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 

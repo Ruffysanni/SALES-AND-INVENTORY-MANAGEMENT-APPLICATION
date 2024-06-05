@@ -1,8 +1,6 @@
 package com.INGRYD.INGRYD_CRM.service;
-import com.INGRYD.INGRYD_CRM.model.Item;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

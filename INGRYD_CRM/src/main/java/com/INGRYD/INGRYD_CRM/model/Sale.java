@@ -1,9 +1,12 @@
 package com.INGRYD.INGRYD_CRM.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
+@Data
 @Entity(name = "sales_table")
 public class Sale {
 
@@ -13,75 +16,31 @@ public class Sale {
     private Long id;
 
     @Column(nullable = false)
-    private String customerId;
-
-    @Column(nullable = false)
     private LocalDateTime saleDate;
 
     @Column(nullable = false)
     private Double totalAmount;
 
-    @Column(nullable = false)
-    private String saleRepId;
+    @ManyToOne
+    @JoinColumn(name = "customerID")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "salesRepID")
+    private SalesRep salesRep;
+
+    @OneToMany(mappedBy = "sale")
+    private List<Item> items;
+
 
     @OneToMany(mappedBy = "sale")
     private List<Payment> payments;
 
-    public Sale() {
-    }
+    @OneToMany(mappedBy = "sale")
+    private List<Invoice> invoices;
 
-    public Sale(Long id, String customerId, LocalDateTime saleDate, Double totalAmount, String saleRepId) {
-        this.id = id;
-        this.customerId = customerId;
-        this.saleDate = saleDate;
-        this.totalAmount = totalAmount;
-        this.saleRepId = saleRepId;
-    }
+    @OneToMany(mappedBy = "sale")
+    private List<Receipt> receipts;
 
-    public Long getId() {
-        return id;
-    }
 
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
-    public LocalDateTime getSaleDate() {
-        return saleDate;
-    }
-
-    public void setSaleDate(LocalDateTime saleDate) {
-        this.saleDate = saleDate;
-    }
-
-    public Double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(Double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public String getSaleRepId() {
-        return saleRepId;
-    }
-
-    public void setSaleRepId(String saleRepId) {
-        this.saleRepId = saleRepId;
-    }
-
-    @Override
-    public String toString() {
-        return "Sale{" +
-                "id=" + id +
-                ", customerId='" + customerId + '\'' +
-                ", saleDate=" + saleDate +
-                ", totalAmount=" + totalAmount +
-                ", saleRepId='" + saleRepId + '\'' +
-                '}';
-    }
 }

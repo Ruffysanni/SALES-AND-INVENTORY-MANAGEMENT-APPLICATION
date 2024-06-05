@@ -1,8 +1,6 @@
 package com.INGRYD.INGRYD_CRM.controller;
-
 import com.INGRYD.INGRYD_CRM.model.Customer;
 import com.INGRYD.INGRYD_CRM.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +10,11 @@ import java.util.List;
 @RequestMapping("/api/v1/customers")
 @CrossOrigin
 public class CustomerController {
-    @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
+
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     //Get all Customers
     @GetMapping("/all")
@@ -39,7 +40,6 @@ public class CustomerController {
 
         return customerService.postCustomer(customer);
     }
-
 
     //updateCustomer
     @PutMapping("/{id}")

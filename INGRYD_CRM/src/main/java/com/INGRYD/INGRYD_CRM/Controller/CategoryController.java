@@ -1,10 +1,8 @@
-package com.INGRYD.INGRYD_CRM.Controller;
-
-import com.INGRYD.INGRYD_CRM.Service.CategoryService;
+package com.INGRYD.INGRYD_CRM.controller;
 import com.INGRYD.INGRYD_CRM.model.Category;
+import com.INGRYD.INGRYD_CRM.service.CategoryService;
 import jakarta.validation.Valid;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +11,15 @@ import java.util.List;
 @RestController
 @Data
 @RequestMapping("/api/v1/category")
+@CrossOrigin
 public class CategoryController {
-    @Autowired
-    private CategoryService categoryService;
+    final
+    CategoryService categoryService;
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
     @GetMapping("/all_categories")
     public ResponseEntity<List<Category>> searchAllCategories() {
         return categoryService.getAllCategories();

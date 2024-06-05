@@ -1,10 +1,7 @@
 package com.INGRYD.INGRYD_CRM.repository;
-
 import com.INGRYD.INGRYD_CRM.model.Sale;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

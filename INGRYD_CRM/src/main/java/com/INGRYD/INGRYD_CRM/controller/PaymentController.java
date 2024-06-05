@@ -1,11 +1,8 @@
 package com.INGRYD.INGRYD_CRM.controller;
-
 import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.service.PaymentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,8 +10,11 @@ import java.util.List;
 @RequestMapping("/api/v1/payments")
 public class PaymentController {
 
-    @Autowired
-    private PaymentService paymentService;
+    private final PaymentService paymentService;
+
+    public PaymentController(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
 
     // Get all Payments
     @GetMapping("/all")
@@ -36,7 +36,7 @@ public class PaymentController {
 
     // Update an existing Payment
     @PutMapping("/all/{id}")
-    public ResponseEntity<Payment> updatePayment(@PathVariable Long id, @PathVariable Payment paymentDetails){
+    public ResponseEntity<Payment> updatePayment(@PathVariable Long id, @RequestBody Payment paymentDetails){
         Payment updatedPayment = paymentService.updatePayment(id, paymentDetails).getBody();
         if(updatedPayment != null){
             return ResponseEntity.ok(updatedPayment);

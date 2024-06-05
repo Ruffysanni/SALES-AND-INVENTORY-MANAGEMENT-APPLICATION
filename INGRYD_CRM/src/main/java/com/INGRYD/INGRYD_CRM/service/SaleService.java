@@ -1,13 +1,9 @@
 package com.INGRYD.INGRYD_CRM.service;
-
 import com.INGRYD.INGRYD_CRM.model.Sale;
 import com.INGRYD.INGRYD_CRM.repository.SaleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +41,7 @@ public class SaleService {
             Sale saleToUpdate = sale.get();
             saleToUpdate.setSaleDate(saleDetails.getSaleDate());
             saleToUpdate.setTotalAmount(saleDetails.getTotalAmount());
-            saleToUpdate.setSaleRepId(saleDetails.getSaleRepId());
+            saleToUpdate.setSalesRepId(saleDetails.getSalesRepId());
             Sale updatedSale = saleRepository.save(saleToUpdate);
             return ResponseEntity.ok(updatedSale);
         } else {
