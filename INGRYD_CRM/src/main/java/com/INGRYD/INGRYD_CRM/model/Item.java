@@ -1,3 +1,19 @@
+
+package com.INGRYD.INGRYD_CRM.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
+
+@Entity(name = "_items_table")
+public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long item_id;
+
+
 //package com.INGRYD.INGRYD_CRM.model;
 //
 //import jakarta.persistence.Entity;
@@ -18,14 +34,34 @@
 //    * */
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long item_id;
-//
+//    private Long item_id
 //    @NotBlank
 //    @NotNull
 //    private Long sale_id;
 //    @NotBlank
 //    @NotNull
 //    private Long product_id;
+
+    @NotBlank
+    @NotNull
+    private Double quantity;
+
+    @NotBlank
+    @NotNull
+    private Double unitPrice;
+
+    @ManyToOne
+    @JoinColumn(name = "sale_id")
+    private List<Sale> sale;
+
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    private List<Product> product;
+
+    public Item() {
+    }
+
+
 //
 //    @NotBlank
 //    @NotNull
@@ -46,7 +82,7 @@
 //
 //    public Item() {
 //    }
-//
+
 //    public Item(Long item_id, Long sale_id, Long product_id, Double quantity, Double unitPrice, Sale sale, Product product) {
 //        this.item_id = item_id;
 //        this.sale_id = sale_id;
@@ -55,7 +91,35 @@
 //        this.unitPrice = unitPrice;
 //        this.sale = sale;
 //        this.product = product;
-//    }
+//    
+
+    public Long getSale_id() {
+        return sale_id;
+    }
+
+    public Long getItem_id() {
+        return item_id;
+    }
+
+    public Long getProduct_id() {
+        return product_id;
+    }
+
+    public Double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
+    
 //
 //    public Long getSale_id() {
 //        return sale_id;
@@ -92,4 +156,3 @@
 //        this.unitPrice = unitPrice;
 //    }
 //
-//}
