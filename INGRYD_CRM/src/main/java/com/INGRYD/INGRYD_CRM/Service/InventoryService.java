@@ -1,25 +1,25 @@
 package com.INGRYD.INGRYD_CRM.service;
-
 import com.INGRYD.INGRYD_CRM.exception.InsufficientStockException;
 import com.INGRYD.INGRYD_CRM.model.Enum.Status;
 import com.INGRYD.INGRYD_CRM.model.Inventory;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.InventoryRepository;
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.INGRYD.INGRYD_CRM.repository.ProductRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Data
+@Transactional
 public class InventoryService {
     private final InventoryRepository inventoryRepository;
+    private final ProductRepository productRepository;
 
-    public InventoryService(InventoryRepository inventoryRepository) {
+    public InventoryService(InventoryRepository inventoryRepository, ProductRepository productRepository) {
         this.inventoryRepository = inventoryRepository;
+        this.productRepository = productRepository;
     }
 
     public ResponseEntity<List<Inventory>> getAllInventories() {
@@ -30,8 +30,9 @@ public class InventoryService {
         return new ResponseEntity<>(inventoryRepository.findById(id).orElseThrow(), HttpStatus.OK);
     }
 
-    public ResponseEntity<List<Inventory>> getInventoryByProduct(Product product) {
-        return new ResponseEntity<>(inventoryRepository.findByProduct(product.getProduct_id()), HttpStatus.OK);
+    public ResponseEntity<List<Inventory>> getInventoryByProduct(Long productID) {
+        Product product = productRepository.findById(productID).orElseThrow();
+        return new ResponseEntity<>(inventoryRepository.findByProduct(product), HttpStatus.OK);
     }
 
     public ResponseEntity<Inventory> createInventory(int stockQuantity, Product product) {
@@ -79,4 +80,5 @@ public class InventoryService {
         }
         return ResponseEntity.ok("Successful");
     }
+
 }
