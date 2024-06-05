@@ -14,8 +14,11 @@ import java.util.Optional;
 @Service
 public class PaymentService {
 
-    @Autowired
-    private PaymentRepository paymentRepository;
+    private final PaymentRepository paymentRepository;
+
+    public PaymentService(PaymentRepository paymentRepository) {
+        this.paymentRepository = paymentRepository;
+    }
 
     // Get all Payments
     public ResponseEntity<List<Payment>> getAllPayments() {
@@ -26,11 +29,7 @@ public class PaymentService {
     // Get Payment by ID
     public ResponseEntity<Payment> getPaymentById(Long id) {
         Optional<Payment> payment = paymentRepository.findById(id);
-        if (payment.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(payment.get());
-        }
+        return payment.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());// this is the same as saying  if(payment.isEmpty()) {return ResponseEntity.notFound().build();
     }
 
     // Create a new Payment

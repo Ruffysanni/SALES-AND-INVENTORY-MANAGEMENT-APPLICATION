@@ -15,8 +15,11 @@ import java.util.Optional;
 @Service
 public class SaleService {
 
-    @Autowired
-    private SaleRepository saleRepository;
+    private final SaleRepository saleRepository;
+
+    public SaleService(SaleRepository saleRepository) {
+        this.saleRepository = saleRepository;
+    }
 
     //Get All Sales
     public ResponseEntity<List<Sale>> getAllSales() {
@@ -26,11 +29,7 @@ public class SaleService {
     //Get a Sale By ID
     public ResponseEntity<Sale> getSaleById(Long id) {
         Optional<Sale> sale = saleRepository.findById(id);
-        if (sale.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(sale.get());
-        }
+        return sale.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build()); //if (sale.isEmpty()) {return ResponseEntity.notFound().build();} else {return ResponseEntity.ok(sale.get());}
     }
 
     //Create a new Sale
@@ -77,3 +76,4 @@ public class SaleService {
         return ResponseEntity.ok(sale);
     }
 }
+

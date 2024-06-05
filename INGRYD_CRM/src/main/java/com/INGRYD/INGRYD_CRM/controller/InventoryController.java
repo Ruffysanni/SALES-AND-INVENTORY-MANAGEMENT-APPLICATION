@@ -1,6 +1,6 @@
 package com.INGRYD.INGRYD_CRM.controller;
 
-import com.INGRYD.INGRYD_CRM.Service.InventoryService;
+import com.INGRYD.INGRYD_CRM.service.InventoryService;
 import com.INGRYD.INGRYD_CRM.model.Inventory;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import jakarta.validation.Valid;
@@ -15,8 +15,12 @@ import java.util.List;
 @Data
 @RequestMapping("/api/v1/inventory")
 public class InventoryController {
-    @Autowired
-    private InventoryService inventoryService;
+    private final InventoryService inventoryService;
+
+    public InventoryController(InventoryService inventoryService) {
+        this.inventoryService = inventoryService;
+    }
+
     @GetMapping("/all_inventories")
     public ResponseEntity<List<Inventory>> searchAllInventories() {
         return inventoryService.getAllInventories();

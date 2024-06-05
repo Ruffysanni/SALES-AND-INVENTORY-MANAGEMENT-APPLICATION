@@ -9,8 +9,11 @@ import java.util.List;
 
 @Service
 public class ItemService {
-    @Autowired
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
+
+    public ItemService(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
 
     public List<Item> getAllItems(){
         return itemRepository.findAll();
@@ -26,10 +29,8 @@ public class ItemService {
         Item itemFromDb = itemRepository.findById(id).get();
 
         // Update the new item with the existing one
-        if(itemFromDb != null){
-            itemToUpdate.setQuantity(itemFromDb.getQuantity());
-            itemToUpdate.setUnitPrice(itemFromDb.getUnitPrice());
-        }
+        itemToUpdate.setQuantity(itemFromDb.getQuantity());
+        itemToUpdate.setUnitPrice(itemFromDb.getUnitPrice());
         return itemRepository.save(itemToUpdate);
     }
 
@@ -37,8 +38,6 @@ public class ItemService {
         // Check if tem to be update is available in the database
         Item itemFromDb = itemRepository.findById(id).get();
         // Delete the new item from the repository
-        if(itemFromDb != null){
-            itemRepository.delete(item);
-        }
+        itemRepository.delete(item);
     }
 }

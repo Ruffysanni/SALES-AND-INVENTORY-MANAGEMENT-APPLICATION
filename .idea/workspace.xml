@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="committing to main branch" />
+    <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="committing to main branch">
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/SaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/SaleService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
