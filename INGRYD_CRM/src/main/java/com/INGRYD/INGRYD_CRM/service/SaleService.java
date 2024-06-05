@@ -3,10 +3,12 @@ package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.Sale;
 import com.INGRYD.INGRYD_CRM.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,9 +19,8 @@ public class SaleService {
     private SaleRepository saleRepository;
 
     //Get All Sales
-    public List<Sale> getAllSales() {
-        List<Sale> sale = saleRepository.findAll();
-        return ResponseEntity.ok(sale).getBody();
+    public ResponseEntity<List<Sale>> getAllSales() {
+        return new ResponseEntity<>(saleRepository.findAll(), HttpStatus.OK);
     }
 
     //Get a Sale By ID
@@ -65,13 +66,13 @@ public class SaleService {
     }
 
     //Get all sales within a specified date range
-    public ResponseEntity<List<Sale>> getSaleByDateRange(LocalDate startDate, LocalDate endDate) {
+    public ResponseEntity<List<Sale>> getSaleByDateRange(LocalDateTime startDate, LocalDateTime endDate) {
         List<Sale> sales = saleRepository.findBySaleDateBetween(startDate, endDate);
         return ResponseEntity.ok(sales);
     }
 
     //Get all sales by SaleRepId within a specified date range
-    public ResponseEntity<List<Sale>> getSalesBySaleRepIdAndDateRange(String saleRepId, LocalDate startDate, LocalDate endDate) {
+    public ResponseEntity<List<Sale>> getSalesBySaleRepIdAndDateRange(String saleRepId, LocalDateTime startDate, LocalDateTime endDate) {
         List<Sale> sale = saleRepository.findBySaleRepIdAndSaleDateBetween(saleRepId, startDate, endDate);
         return ResponseEntity.ok(sale);
     }

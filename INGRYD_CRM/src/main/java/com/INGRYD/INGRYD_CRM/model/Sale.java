@@ -1,8 +1,7 @@
 package com.INGRYD.INGRYD_CRM.model;
 
 import jakarta.persistence.*;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity(name = "sales_table")
@@ -17,7 +16,7 @@ public class Sale {
     private String customerId;
 
     @Column(nullable = false)
-    private LocalDate saleDate;
+    private LocalDateTime saleDate;
 
     @Column(nullable = false)
     private Double totalAmount;
@@ -25,10 +24,13 @@ public class Sale {
     @Column(nullable = false)
     private String saleRepId;
 
-    @OneToMany(mappedBy = "sales")
+    @OneToMany(mappedBy = "sale")
     private List<Payment> payments;
 
-    public Sale(Long id, String customerId, LocalDate saleDate, Double totalAmount, String saleRepId) {
+    public Sale() {
+    }
+
+    public Sale(Long id, String customerId, LocalDateTime saleDate, Double totalAmount, String saleRepId) {
         this.id = id;
         this.customerId = customerId;
         this.saleDate = saleDate;
@@ -48,11 +50,11 @@ public class Sale {
         this.customerId = customerId;
     }
 
-    public LocalDate getSaleDate() {
+    public LocalDateTime getSaleDate() {
         return saleDate;
     }
 
-    public void setSaleDate(LocalDate saleDate) {
+    public void setSaleDate(LocalDateTime saleDate) {
         this.saleDate = saleDate;
     }
 

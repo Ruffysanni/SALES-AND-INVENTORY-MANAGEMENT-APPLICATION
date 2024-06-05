@@ -17,14 +17,14 @@ public class PaymentController {
     private PaymentService paymentService;
 
     // Get all Payments
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Payment>> getAllPayments() {
         return paymentService.getAllPayments();
     }
 
 
     // Get a Payment by ID
-    @GetMapping("/{id}")
+    @GetMapping("/all/{id}")
     public ResponseEntity<Payment> getPaymentById(@PathVariable Long id) {
         return paymentService.getPaymentById(id);
     }
@@ -36,7 +36,7 @@ public class PaymentController {
     }
 
     // Update an existing Payment
-    @PutMapping("/{id}")
+    @PutMapping("/all/{id}")
     public ResponseEntity<Payment> updatePayment(@PathVariable Long id, @PathVariable Payment paymentDetails){
         Payment updatedPayment = paymentService.updatePayment(id, paymentDetails).getBody();
         if(updatedPayment != null){
@@ -47,7 +47,7 @@ public class PaymentController {
     }
 
     // Delete a Payment
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/all/{id}")
     public ResponseEntity<Void> deletePayment(@PathVariable Long id){
         paymentService.deletePayment(id);
         return ResponseEntity.noContent().build();

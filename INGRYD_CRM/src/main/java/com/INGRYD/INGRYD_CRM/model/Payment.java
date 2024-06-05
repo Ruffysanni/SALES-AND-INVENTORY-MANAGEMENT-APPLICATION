@@ -4,6 +4,7 @@ package com.INGRYD.INGRYD_CRM.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity (name = "payment_table")
 public class Payment {
@@ -30,6 +31,8 @@ public class Payment {
     private Sale sale;
 
 
+    public Payment() {
+    }
 
     public Payment(Long id, LocalDate paymentDate, Double amount, String paymentMethod, Long saleId) {
         this.id = id;
