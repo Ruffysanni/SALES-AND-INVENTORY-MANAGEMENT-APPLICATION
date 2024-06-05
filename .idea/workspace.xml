@@ -4,11 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="committing to main branch" />
+    <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="committing changes, some codes were optimized for easy reading and some of the errors were resolved">
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Service/InventoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ProductService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
@@ -34,12 +45,21 @@
       <option name="project" value="LOCAL" />
       <updated>1716816152177</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="committing changes, some codes were optimized for easy reading and some of the errors were resolved">
+      <option name="closed" value="true" />
+      <created>1717584179379</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717584179380</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created the repository interfaces for the SalesRep and invoice model classes" />
     <MESSAGE value="committing to main branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="committing to main branch" />
+    <MESSAGE value="committing changes, some codes were optimized for easy reading and some of the errors were resolved" />
+    <option name="LAST_COMMIT_MESSAGE" value="committing changes, some codes were optimized for easy reading and some of the errors were resolved" />
   </component>
 </project>
