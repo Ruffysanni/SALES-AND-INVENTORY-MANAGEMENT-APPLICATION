@@ -58,15 +58,15 @@ public class InventoryService {
     }
 
     //  Logics on the Inventory Tracking
-    public ResponseEntity<String> inventoryTracking(Product product, long quantity) {
+    public ResponseEntity<String> inventoryTracking(Product product, long itemQuantity) {
         List<Inventory> inventoryRecords = inventoryRepository.findByProduct(product);
         for (Inventory inventory : inventoryRecords) {
-            if (quantity > inventory.getRemainingQuantity()) {
+            if (itemQuantity > inventory.getRemainingQuantity()) {
                 int quantityLeft = inventory.getRemainingQuantity();
                 throw new InsufficientStockException(STR."Not enough stock available. Only\{quantityLeft} quantities left.");
             }
-            if (inventory.getRemainingQuantity() >= quantity) {
-                inventory.setRemainingQuantity((int) (inventory.getRemainingQuantity() - quantity));
+            if (inventory.getRemainingQuantity() >= itemQuantity) {
+                inventory.setRemainingQuantity((int) (inventory.getRemainingQuantity() - itemQuantity));
 
                 if (inventory.getRemainingQuantity() == 10 && inventory.getRemainingQuantity() == 5) {
                     inventory.setStatus(Status.LOW_STOCK);
