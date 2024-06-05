@@ -29,12 +29,13 @@ public class Receipts {
 
     @ManyToOne
     @JoinColumn(name = "sales_id")
-    private Sales sales;
+    private Sale sale;
 
     public Receipts() {
     }
 
     ;
+
 
     public Receipts(Long id, String receiptDate, Double amount, String narration, Sales sales) {
         this.id = id;
@@ -42,6 +43,12 @@ public class Receipts {
         this.amount = amount;
         this.narration = narration;
         this.sales = sales;
+
+    public Receipts(Long id, String receiptDate, Double amount, Sale sale) {
+        this.id = id;
+        this.receiptDate = receiptDate;
+        this.amount = amount;
+        this.sale = sale;
     }
 
     public Long getId() {
@@ -60,6 +67,9 @@ public class Receipts {
 
     public Sales getSales() {
         return sales;
+    public Sale getSales() {
+        return sale;
+
     }
 
     @Override
@@ -67,7 +77,7 @@ public class Receipts {
         return "Receipts{" +
                 "receiptDate='" + receiptDate + '\'' +
                 ", amount=" + amount +
-                ", sales=" + sales +
+                ", sale=" + sale +
                 '}';
     }
 }
