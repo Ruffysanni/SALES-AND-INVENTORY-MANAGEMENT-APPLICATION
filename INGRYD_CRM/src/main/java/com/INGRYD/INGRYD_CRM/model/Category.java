@@ -3,6 +3,8 @@ package com.INGRYD.INGRYD_CRM.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.List;
+
 @Entity(name = "category_table")
 public class Category {
     @Id
@@ -12,12 +14,15 @@ public class Category {
     @NotNull
     @Column(unique = true)
     private String name;
+    @OneToMany(mappedBy = "category")
+    private List<Product> product;
 
     public Category() {}
 
-    public Category(Long id, String name) {
+    public Category(Long id, String name, List<Product> product) {
         this.id = id;
         this.name = name;
+        this.product = product;
     }
 
     public Long getId() {
@@ -36,11 +41,20 @@ public class Category {
         this.name = name;
     }
 
+    public List<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List<Product> product) {
+        this.product = product;
+    }
+
     @Override
     public String toString() {
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", product=" + product +
                 '}';
     }
 }
