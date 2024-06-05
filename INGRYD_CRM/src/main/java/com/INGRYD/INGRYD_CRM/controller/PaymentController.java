@@ -22,7 +22,6 @@ public class PaymentController {
         return paymentService.getAllPayments();
     }
 
-
     // Get a Payment by ID
     @GetMapping("/all/{id}")
     public ResponseEntity<Payment> getPaymentById(@PathVariable Long id) {
