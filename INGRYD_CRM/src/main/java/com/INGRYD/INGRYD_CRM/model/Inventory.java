@@ -1,5 +1,6 @@
 package com.INGRYD.INGRYD_CRM.model;
 
+import com.INGRYD.INGRYD_CRM.model.Enum.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,33 +11,42 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id")
     private Long id;
-    private Long product_id;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
     @NotNull
     @NotBlank(message = "Please enter a value")
     private int stockQuantity;
+    @NotNull
+    @NotBlank()
+    private int remainingQuantity;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     public Inventory() {}
 
-    public Inventory(Long id, Long product_id, int stockQuantity) {
+    public Inventory(Long id, Product product, int stockQuantity, int remainingQuantity, Status status) {
         this.id = id;
-        this.product_id = product_id;
+        this.product = product;
         this.stockQuantity = stockQuantity;
+        this.remainingQuantity = remainingQuantity;
+        this.status = status;
     }
 
     public Long getId() {
         return id;
     }
-
+/*
 //    public void setId(Long id) {
 //        this.id = id;
-//    }
+    }*/
 
-    public Long getProduct_id() {
-        return product_id;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProduct_id(Long product_id) {
-        this.product_id = product_id;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getStockQuantity() {
@@ -47,12 +57,30 @@ public class Inventory {
         this.stockQuantity = stockQuantity;
     }
 
+    public int getRemainingQuantity() {
+        return remainingQuantity;
+    }
+
+    public void setRemainingQuantity(int remainingQuantity) {
+        this.remainingQuantity = remainingQuantity;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Inventory{" +
                 "id=" + id +
-                ", product_id=" + product_id +
+                ", product=" + product +
                 ", stockQuantity=" + stockQuantity +
+                ", remainingQuantity=" + remainingQuantity +
+                ", status=" + status +
                 '}';
     }
 }

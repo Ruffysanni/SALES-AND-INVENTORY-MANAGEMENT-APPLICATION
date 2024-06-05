@@ -50,15 +50,31 @@ public class Item {
     @NotNull
     private Double unitPrice;
 
+    @NotBlank
+    @NotNull
+    private Sales sales;
+
     @ManyToOne
     @JoinColumn(name = "sale_id")
     private List<Sale> sale;
+
 
     @OneToOne
     @JoinColumn(name = "product_id")
     private List<Product> product;
 
     public Item() {
+    }
+
+
+    public Item(Long item_id, Long sale_id, Long product_id, Double quantity, Double unitPrice, Sales sales, Product product) {
+        this.item_id = item_id;
+        this.sale_id = sale_id;
+        this.product_id = product_id;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.sales = sales;
+        this.product = product;
     }
 
 
