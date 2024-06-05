@@ -25,6 +25,8 @@ public class Receipts {
     @Positive(message = "Amount due must be positive")
     private Double amount;
 
+    private String narration;
+
     @ManyToOne
     @JoinColumn(name = "sales_id")
     private Sales sales;
@@ -34,10 +36,11 @@ public class Receipts {
 
     ;
 
-    public Receipts(Long id, String receiptDate, Double amount, Sales sales) {
+    public Receipts(Long id, String receiptDate, Double amount, String narration, Sales sales) {
         this.id = id;
         this.receiptDate = receiptDate;
         this.amount = amount;
+        this.narration = narration;
         this.sales = sales;
     }
 
@@ -52,6 +55,8 @@ public class Receipts {
     public Double getAmount() {
         return amount;
     }
+
+    public String getNarration(){return narration;}
 
     public Sales getSales() {
         return sales;
