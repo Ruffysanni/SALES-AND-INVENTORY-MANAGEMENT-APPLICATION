@@ -1,5 +1,4 @@
 package com.INGRYD.INGRYD_CRM.service;
-
 import com.INGRYD.INGRYD_CRM.model.Item;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.ProductRepository;
@@ -10,7 +9,7 @@ import java.util.List;
 
 @Service
 public class ProductService {
-    private final ProductRepository productRepository;
+    final ProductRepository productRepository;
 
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -30,12 +29,10 @@ public class ProductService {
         Product productFromDb = productRepository.findById(id).get();
 
         // Update the new item with the existing one
-        if(productFromDb != null){
-            productToUpdate.setProductName(productFromDb.getProductName());
-            productToUpdate.setCategory(productFromDb.getCategory());
-            productToUpdate.setDescription(productFromDb.getDescription());
-            productToUpdate.setPrice(productFromDb.getPrice());
-        }
+        productToUpdate.setProductName(productFromDb.getProductName());
+        productToUpdate.setCategory(productFromDb.getCategory());
+        productToUpdate.setDescription(productFromDb.getDescription());
+        productToUpdate.setPrice(productFromDb.getPrice());
         return productRepository.save(productToUpdate);
     }
 
@@ -43,8 +40,6 @@ public class ProductService {
         // Check if tem to be update is available in the database
         Product productFromDb = productRepository.findById(id).get();
         // Delete the new item from the repository
-        if(productFromDb != null){
-            productRepository.delete(product);
-        }
+        productRepository.delete(product);
     }
 }

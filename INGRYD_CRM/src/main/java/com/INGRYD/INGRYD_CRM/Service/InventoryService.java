@@ -1,4 +1,4 @@
-package com.INGRYD.INGRYD_CRM.Service;
+package com.INGRYD.INGRYD_CRM.service;
 
 import com.INGRYD.INGRYD_CRM.exception.InsufficientStockException;
 import com.INGRYD.INGRYD_CRM.model.Enum.Status;
@@ -16,8 +16,11 @@ import java.util.List;
 @Service
 @Data
 public class InventoryService {
-    @Autowired
-    private InventoryRepository inventoryRepository;
+    private final InventoryRepository inventoryRepository;
+
+    public InventoryService(InventoryRepository inventoryRepository) {
+        this.inventoryRepository = inventoryRepository;
+    }
 
     public ResponseEntity<List<Inventory>> getAllInventories() {
         return new ResponseEntity<>(inventoryRepository.findAll(), HttpStatus.OK);
