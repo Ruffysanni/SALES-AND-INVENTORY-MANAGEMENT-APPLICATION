@@ -1,16 +1,15 @@
 package com.INGRYD.INGRYD_CRM.model;
-
-
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Entity (name = "payment_table")
+@Entity(name = "payment_table")
+@Data
 public class Payment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name ="payment_id")
+    @Column(name = "paymentID")
     private Long id;
 
     @Column(nullable = false)
@@ -23,67 +22,9 @@ public class Payment {
     private String paymentMethod;
 
     @Column(nullable = false)
-    private Long salesId;
+    private Long saleId;
 
     @ManyToOne
-    @JoinColumn(name = "sales_id", nullable = false)
-    private Sales sales;
-
-
-
-    public Payment(Long id, LocalDate paymentDate, Double amount, String paymentMethod, Long salesId) {
-        this.id = id;
-        this.paymentDate = paymentDate;
-        this.amount = amount;
-        this.paymentMethod = paymentMethod;
-        this.salesId = salesId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-
-    public LocalDate getPaymentDate() {
-        return paymentDate;
-    }
-
-    public void setPaymentDate(LocalDate paymentDate) {
-        this.paymentDate = paymentDate;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public Long getSalesId() {
-        return salesId;
-    }
-
-    public void setSalesId(Long salesId) {
-        this.salesId = salesId;
-    }
-
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "id=" + id +
-                ", paymentDate=" + paymentDate +
-                ", amount=" + amount +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                ", salesId=" + salesId +
-                '}';
-    }
+    @JoinColumn(name = "salesID")
+    private Sale sales;
 }

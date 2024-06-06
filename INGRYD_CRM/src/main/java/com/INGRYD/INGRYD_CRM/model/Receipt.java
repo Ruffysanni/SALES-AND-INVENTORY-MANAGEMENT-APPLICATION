@@ -1,4 +1,5 @@
 package com.INGRYD.INGRYD_CRM.model;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -7,34 +8,27 @@ import jakarta.validation.constraints.Positive;
 import lombok.*;
 import java.time.LocalDate;
 
-
-@Entity
-@Table
 @Data
-public class Invoice {
+@Entity(name = "receipts_table")
 
+public class Receipt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "invoiceID")
-    private long id;
-
-    private LocalDate date;
+    @Column(name = "receiptID")
+    private Long id;
 
     @NotEmpty
+    @NotBlank(message = "Receipt date is mandatory")
     @NotNull
-    @Temporal(TemporalType.DATE)
-    private LocalDate invoiceDate;
+    private LocalDate receiptDate;
 
-    @NotBlank(message = "amount due is mandatory")
+    @NotEmpty
+    @NotBlank(message = "amount is mandatory")
     @NotNull
     @Positive(message = "Amount due must be positive")
-    private double amountDue;
+    private Double amount;
 
-    @NotEmpty
-    @NotBlank(message = "invoice due date is mandatory")
-    @NotNull
-    @Temporal(TemporalType.DATE)
-    private LocalDate dueDate;
+    private String narration;
 
     @ManyToOne
     @JoinColumn(name = "salesID")
