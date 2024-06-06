@@ -54,11 +54,11 @@ public class SaleController {
 
     //Get all sales by SaleRepId within a specified date range
     @GetMapping("/salesRep/{saleRepId}/date-range")
-    public ResponseEntity<List<Sale>> getSalesBySaleRepIdAndDateRange(
-            @PathVariable String saleRepId,
+    public ResponseEntity<List<Sale>> getSalesBySalesRepIdAndDateRange(
+            @PathVariable Long salesRepId,
             @RequestParam LocalDateTime startDate,
             @RequestParam LocalDateTime endDate) {
-        return saleService.getSalesBySaleRepIdAndDateRange(saleRepId, startDate, endDate);
+        return saleService.getSalesBySaleRepIdAndDateRange(salesRepId, startDate, endDate);
     }
 
 }

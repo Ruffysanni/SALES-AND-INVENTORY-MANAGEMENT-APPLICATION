@@ -15,8 +15,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/receipts")
 public class ReceiptsController {
-    @Autowired
-    private ReceiptsService receiptsService;
+    private final ReceiptsService receiptsService;
+
+    public ReceiptsController(ReceiptsService receiptsService) {
+        this.receiptsService = receiptsService;
+    }
 
     //Get all Receipts
     @GetMapping("/all")

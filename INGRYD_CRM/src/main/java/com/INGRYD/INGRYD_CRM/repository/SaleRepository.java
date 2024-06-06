@@ -12,7 +12,7 @@ public interface SaleRepository extends JpaRepository <Sale, Long> {
     List<Sale> findBySaleDateBetween(LocalDateTime startDate, LocalDateTime endDate);
 
     //This query method find all sales by salesId and salesRepId within a specified date range
-    List<Sale> findBySaleRepIdAndSaleDateBetween(String saleRepId, LocalDateTime startDate, LocalDateTime endDate);
+    List<Sale> findBySalesRepIdAndSaleDateBetween(Long salesRepId, LocalDateTime startDate, LocalDateTime endDate);
 
 }
 

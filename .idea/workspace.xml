@@ -4,21 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="making multiple changes to the codebase">
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/InventoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Product.java" afterDir="false" />
+    <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="making multiple changes to the codebase and resolving all errors in all classes">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/ReceiptsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/ReceiptsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/SaleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/dto/ReceiptsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/dto/ReceiptsDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Sale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/SalesRep.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/SalesRep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/ReceiptsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/ReceiptsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/SaleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/SaleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ReceiptsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/ReceiptsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/SaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/SaleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/logger.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/logger.log.2024-05-27.0.gz" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +35,50 @@
       </list>
     </option>
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "CHARLE123455"
   }
-}</component>
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ruffysanni/SALES-AND-INVENTORY-MANAGEMENT-APPLICATION.git",
+    "accountId": "04ea45a5-a33b-4387-981c-e64a819ff9db"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2hU53tW4BmKzodMmHZwUfRrqCWv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.IngrydCrmApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.preview.features.used": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="IngrydCrmApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="INGRYD_CRM" />
@@ -48,6 +88,15 @@
       </method>
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="committing to main branch">
       <option name="closed" value="true" />
@@ -97,8 +146,35 @@
       <option name="project" value="LOCAL" />
       <updated>1717610714403</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="making multiple changes to the codebase and resolving all errors in all classes">
+      <option name="closed" value="true" />
+      <created>1717634019999</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1717634019999</updated>
+    </task>
+    <task id="LOCAL-00008" summary="making multiple changes to the codebase and resolving all errors in all classes">
+      <option name="closed" value="true" />
+      <created>1717634189070</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717634189070</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="making multiple changes to the codebase and resolving all errors in all classes" />
+      <created>1717635626126</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717635626126</updated>
+      <workItem from="1717635630432" duration="5235000" />
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created the repository interfaces for the SalesRep and invoice model classes" />
@@ -107,6 +183,17 @@
     <MESSAGE value="ProductRepository errors resolved" />
     <MESSAGE value="Merge pull request #15 from Ruffysanni/Hardeymorlah12&#10;&#10;Hardeymorlah12" />
     <MESSAGE value="making multiple changes to the codebase" />
-    <option name="LAST_COMMIT_MESSAGE" value="making multiple changes to the codebase" />
+    <MESSAGE value="making multiple changes to the codebase and resolving all errors in all classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="making multiple changes to the codebase and resolving all errors in all classes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.data.mapping.PropertyReferenceException" package="org.springframework.data.mapping" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

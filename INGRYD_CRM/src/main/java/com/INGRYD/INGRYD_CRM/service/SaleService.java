@@ -74,8 +74,8 @@ public class SaleService {
     }
 
     //Get all sales by SaleRepId within a specified date range
-    public ResponseEntity<List<Sale>> getSalesBySaleRepIdAndDateRange(String saleRepId, LocalDateTime startDate, LocalDateTime endDate) {
-        List<Sale> sale = saleRepository.findBySaleRepIdAndSaleDateBetween(saleRepId, startDate, endDate);
+    public ResponseEntity<List<Sale>> getSalesBySaleRepIdAndDateRange(Long salesRepId, LocalDateTime startDate, LocalDateTime endDate) {
+        List<Sale> sale = saleRepository.findBySalesRepIdAndSaleDateBetween(salesRepId, startDate, endDate);
         return ResponseEntity.ok(sale);
     }
 }

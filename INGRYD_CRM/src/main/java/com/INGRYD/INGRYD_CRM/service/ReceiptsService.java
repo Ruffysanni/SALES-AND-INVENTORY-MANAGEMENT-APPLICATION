@@ -24,7 +24,6 @@ public class ReceiptsService {
      *
      * */
     private final ReceiptsRepository receiptsRepository;
-
     private final PaymentService paymentService;
 
     public ReceiptsService(ReceiptsRepository receiptsRepository, PaymentService paymentService) {
@@ -37,13 +36,13 @@ public class ReceiptsService {
         return new ResponseEntity<>(receiptsRepository.findAll(), HttpStatus.OK);
     }
 
-    //Get Receipts by ID
+    // Get Receipts by ID
     public ResponseEntity<Receipt> getReceiptById(Long id) {
         Optional<Receipt> receipt = receiptsRepository.findById(id);
         if (receipt.isEmpty()) {
-            return new ResponseEntity<>(receiptsRepository.findByReceiptId(id), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<>(receiptsRepository.findByReceiptId(id), HttpStatus.OK);
+            return new ResponseEntity<>(receipt.get(), HttpStatus.OK);
         }
     }
 

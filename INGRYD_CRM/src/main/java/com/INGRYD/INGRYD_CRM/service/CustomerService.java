@@ -25,7 +25,7 @@ public class CustomerService {
     }
     //getCustomerName
     public ResponseEntity<Customer> getCustomerName(String name){
-        return new ResponseEntity<>(customerRepository.findByCustomerName(name), HttpStatus.OK);
+        return new ResponseEntity<>(customerRepository.findByName(name), HttpStatus.OK);
     }
 
     //postCustomer

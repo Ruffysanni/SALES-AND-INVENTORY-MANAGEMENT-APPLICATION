@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
+import java.time.LocalDate;
 
 @Data
 @Entity(name = "receipts_table")
@@ -19,8 +20,7 @@ public class Receipt {
     @NotEmpty
     @NotBlank(message = "Receipt date is mandatory")
     @NotNull
-    @Temporal(TemporalType.DATE)
-    private String receiptDate;
+    private LocalDate receiptDate;
 
     @NotEmpty
     @NotBlank(message = "amount is mandatory")
