@@ -1029,3 +1029,66 @@ Caused by: org.postgresql.util.PSQLException: ERROR: column "receipt_date" canno
 2024-06-06T03:31:01.384+01:00  INFO 25160 --- [INGRYD_CRM] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-06-06T03:31:01.387+01:00  INFO 25160 --- [INGRYD_CRM] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-06-06T03:31:01.407+01:00  INFO 25160 --- [INGRYD_CRM] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-06T04:06:54.771+01:00  INFO 11648 --- [INGRYD_CRM] [main] c.I.INGRYD_CRM.IngrydCrmApplication      : Starting IngrydCrmApplication using Java 22.0.1 with PID 11648 (C:\Users\ETC\Desktop\SALES-AND-INVENTORY-MANAGEMENT-APPLICATION\INGRYD_CRM\target\classes started by ETC in C:\Users\ETC\Desktop\SALES-AND-INVENTORY-MANAGEMENT-APPLICATION)
+2024-06-06T04:06:54.790+01:00  INFO 11648 --- [INGRYD_CRM] [main] c.I.INGRYD_CRM.IngrydCrmApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-06T04:06:57.773+01:00  INFO 11648 --- [INGRYD_CRM] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-06T04:06:57.906+01:00  INFO 11648 --- [INGRYD_CRM] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 120 ms. Found 10 JPA repository interfaces.
+2024-06-06T04:06:59.462+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9009 (http)
+2024-06-06T04:06:59.491+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-06T04:06:59.491+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-06T04:06:59.717+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-06T04:06:59.720+01:00  INFO 11648 --- [INGRYD_CRM] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4738 ms
+2024-06-06T04:07:00.472+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-06T04:07:00.619+01:00  INFO 11648 --- [INGRYD_CRM] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-06T04:07:00.696+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-06T04:07:01.329+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-06T04:07:01.383+01:00  INFO 11648 --- [INGRYD_CRM] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-06T04:07:01.655+01:00  INFO 11648 --- [INGRYD_CRM] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6719f206
+2024-06-06T04:07:01.658+01:00  INFO 11648 --- [INGRYD_CRM] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-06T04:07:04.155+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-06T04:07:04.443+01:00  INFO 11648 --- [INGRYD_CRM] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-06T04:07:07.937+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2024-06-06T04:07:08.139+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9009 (http) with context path '/'
+2024-06-06T04:07:08.283+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.a.c.impl.engine.AbstractCamelContext   : Apache Camel 4.5.0 (camel-1) is starting
+2024-06-06T04:07:08.299+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.a.c.impl.engine.AbstractCamelContext   : Routes startup (total:0)
+2024-06-06T04:07:08.300+01:00  INFO 11648 --- [INGRYD_CRM] [main] o.a.c.impl.engine.AbstractCamelContext   : Apache Camel 4.5.0 (camel-1) started in 15ms (build:0ms init:0ms start:15ms)
+2024-06-06T04:07:08.307+01:00  INFO 11648 --- [INGRYD_CRM] [main] c.I.INGRYD_CRM.IngrydCrmApplication      : Started IngrydCrmApplication in 14.45 seconds (process running for 17.124)
+2024-06-06T04:07:08.860+01:00  INFO 11648 --- [INGRYD_CRM] [RMI TCP Connection(1)-192.168.43.192] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-06T04:07:08.861+01:00  INFO 11648 --- [INGRYD_CRM] [RMI TCP Connection(1)-192.168.43.192] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-06T04:07:08.867+01:00  INFO 11648 --- [INGRYD_CRM] [RMI TCP Connection(1)-192.168.43.192] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2024-06-06T04:07:14.645+01:00  INFO 11648 --- [INGRYD_CRM] [SpringApplicationShutdownHook] o.a.c.impl.engine.AbstractCamelContext   : Apache Camel 4.5.0 (camel-1) is shutting down (timeout:45s)
+2024-06-06T04:07:14.660+01:00  INFO 11648 --- [INGRYD_CRM] [SpringApplicationShutdownHook] o.a.c.impl.engine.AbstractCamelContext   : Routes stopped (total:0)
+2024-06-06T04:07:14.672+01:00  INFO 11648 --- [INGRYD_CRM] [SpringApplicationShutdownHook] o.a.c.impl.engine.AbstractCamelContext   : Apache Camel 4.5.0 (camel-1) shutdown in 27ms (uptime:6s)
+2024-06-06T04:07:14.687+01:00  INFO 11648 --- [INGRYD_CRM] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-06T04:07:14.692+01:00  INFO 11648 --- [INGRYD_CRM] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-06T04:07:14.714+01:00  INFO 11648 --- [INGRYD_CRM] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-06T04:08:29.682+01:00  INFO 20552 --- [INGRYD_CRM] [main] c.I.INGRYD_CRM.IngrydCrmApplication      : Starting IngrydCrmApplication using Java 22.0.1 with PID 20552 (C:\Users\ETC\Desktop\SALES-AND-INVENTORY-MANAGEMENT-APPLICATION\INGRYD_CRM\target\classes started by ETC in C:\Users\ETC\Desktop\SALES-AND-INVENTORY-MANAGEMENT-APPLICATION)
+2024-06-06T04:08:29.686+01:00  INFO 20552 --- [INGRYD_CRM] [main] c.I.INGRYD_CRM.IngrydCrmApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-06-06T04:08:31.953+01:00  INFO 20552 --- [INGRYD_CRM] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-06T04:08:32.079+01:00  INFO 20552 --- [INGRYD_CRM] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 10 JPA repository interfaces.
+2024-06-06T04:08:33.332+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9009 (http)
+2024-06-06T04:08:33.348+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-06T04:08:33.349+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-06T04:08:33.495+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-06T04:08:33.497+01:00  INFO 20552 --- [INGRYD_CRM] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3667 ms
+2024-06-06T04:08:34.043+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-06T04:08:34.148+01:00  INFO 20552 --- [INGRYD_CRM] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-06T04:08:34.204+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-06T04:08:34.732+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-06T04:08:34.775+01:00  INFO 20552 --- [INGRYD_CRM] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-06T04:08:35.054+01:00  INFO 20552 --- [INGRYD_CRM] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@35f22eef
+2024-06-06T04:08:35.058+01:00  INFO 20552 --- [INGRYD_CRM] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-06T04:08:37.413+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-06T04:08:37.679+01:00  INFO 20552 --- [INGRYD_CRM] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-06T04:08:40.869+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2024-06-06T04:08:41.035+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9009 (http) with context path '/'
+2024-06-06T04:08:41.172+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.a.c.impl.engine.AbstractCamelContext   : Apache Camel 4.5.0 (camel-1) is starting
+2024-06-06T04:08:41.190+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.a.c.impl.engine.AbstractCamelContext   : Routes startup (total:0)
+2024-06-06T04:08:41.191+01:00  INFO 20552 --- [INGRYD_CRM] [main] o.a.c.impl.engine.AbstractCamelContext   : Apache Camel 4.5.0 (camel-1) started in 17ms (build:0ms init:0ms start:17ms)
+2024-06-06T04:08:41.200+01:00  INFO 20552 --- [INGRYD_CRM] [main] c.I.INGRYD_CRM.IngrydCrmApplication      : Started IngrydCrmApplication in 12.405 seconds (process running for 14.137)
+2024-06-06T04:08:44.722+01:00  INFO 20552 --- [INGRYD_CRM] [SpringApplicationShutdownHook] o.a.c.impl.engine.AbstractCamelContext   : Apache Camel 4.5.0 (camel-1) is shutting down (timeout:45s)
+2024-06-06T04:08:44.730+01:00  INFO 20552 --- [INGRYD_CRM] [SpringApplicationShutdownHook] o.a.c.impl.engine.AbstractCamelContext   : Routes stopped (total:0)
+2024-06-06T04:08:44.734+01:00  INFO 20552 --- [INGRYD_CRM] [SpringApplicationShutdownHook] o.a.c.impl.engine.AbstractCamelContext   : Apache Camel 4.5.0 (camel-1) shutdown in 11ms (uptime:3s)
+2024-06-06T04:08:44.746+01:00  INFO 20552 --- [INGRYD_CRM] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-06T04:08:44.748+01:00  INFO 20552 --- [INGRYD_CRM] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-06T04:08:44.769+01:00  INFO 20552 --- [INGRYD_CRM] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
