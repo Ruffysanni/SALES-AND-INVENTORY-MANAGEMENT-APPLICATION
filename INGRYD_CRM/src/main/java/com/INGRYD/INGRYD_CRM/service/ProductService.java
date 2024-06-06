@@ -2,10 +2,12 @@ package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.ProductRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ProductService {
     final ProductRepository productRepository;
 

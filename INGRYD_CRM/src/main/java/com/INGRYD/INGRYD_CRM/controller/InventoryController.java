@@ -31,8 +31,8 @@ public class InventoryController {
         return inventoryService.getInventoryByProduct(product.getProduct_id());
     }
     @PostMapping("/post_inventory")
-    public ResponseEntity<Inventory> postNewInventory(@RequestBody int stockQuantity, @RequestBody Long productID) {
-        Product product = productRepository.findById(productID).orElseThrow();
+    public ResponseEntity<Inventory> postNewInventory(@RequestBody int stockQuantity, @RequestBody Long product_id) {
+        Product product = productRepository.findById(product_id).orElseThrow();
         return inventoryService.createInventory(stockQuantity, product);
     }
     @PutMapping("/update_inventory/{id}")

@@ -1,20 +1,26 @@
 package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.Sale;
+import com.INGRYD.INGRYD_CRM.model.SalesRep;
 import com.INGRYD.INGRYD_CRM.repository.SaleRepository;
+import com.INGRYD.INGRYD_CRM.repository.SalesRepRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class SaleService {
 
     private final SaleRepository saleRepository;
+    private final SalesRepRepository salesRepRepository;
 
-    public SaleService(SaleRepository saleRepository) {
+    public SaleService(SaleRepository saleRepository, SalesRepRepository salesRepRepository) {
         this.saleRepository = saleRepository;
+        this.salesRepRepository = salesRepRepository;
     }
 
     //Get All Sales
@@ -41,7 +47,8 @@ public class SaleService {
             Sale saleToUpdate = sale.get();
             saleToUpdate.setSaleDate(saleDetails.getSaleDate());
             saleToUpdate.setTotalAmount(saleDetails.getTotalAmount());
-            saleToUpdate.setSalesRepId(saleDetails.getSalesRepId());
+            SalesRep salesRep = salesRepRepository.findById(saleDetails.getSalesRep().getId()).orElseThrow();
+            saleToUpdate.setSalesRep(salesRep);
             Sale updatedSale = saleRepository.save(saleToUpdate);
             return ResponseEntity.ok(updatedSale);
         } else {

@@ -37,7 +37,6 @@ public class PaymentService {
         return ResponseEntity.ok(savedPayment);
     }
 
-    // Update an existing Payment
     public ResponseEntity<Payment> updatePayment(Long id, Payment paymentDetails) {
         Optional<Payment> payment = paymentRepository.findById(id);
         if (payment.isPresent()) {

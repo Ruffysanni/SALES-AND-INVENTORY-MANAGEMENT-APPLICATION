@@ -5,12 +5,11 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
-@Entity(name = "_products_table")
+@Entity(name = "products_table")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long product_id;
-    private Long category_id;
+    private Long id;
 
     @NotNull
     @NotBlank
@@ -24,7 +23,7 @@ public class Product {
     private Double price;
 
     @ManyToOne
-    @JoinColumn (name = "category_id")
+    @JoinColumn (name = "categoryID")
     private Category category;
 
 

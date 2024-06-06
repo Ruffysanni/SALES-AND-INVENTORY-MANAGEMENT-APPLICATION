@@ -1,5 +1,4 @@
 package com.INGRYD.INGRYD_CRM.model;
-
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -12,7 +11,7 @@ public class Sale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="sale_id")
+    @Column(name="salesID")
     private Long id;
 
     @Column(nullable = false)
@@ -29,18 +28,16 @@ public class Sale {
     @JoinColumn(name = "salesRepID")
     private SalesRep salesRep;
 
-    @OneToMany(mappedBy = "sale")
+    @OneToMany(mappedBy = "sales")
     private List<Item> items;
 
 
-    @OneToMany(mappedBy = "sale")
+    @OneToMany(mappedBy = "sales")
     private List<Payment> payments;
 
-    @OneToMany(mappedBy = "sale")
+    @OneToMany(mappedBy = "sales")
     private List<Invoice> invoices;
 
-    @OneToMany(mappedBy = "sale")
+    @OneToMany(mappedBy = "sales")
     private List<Receipt> receipts;
-
-
 }
