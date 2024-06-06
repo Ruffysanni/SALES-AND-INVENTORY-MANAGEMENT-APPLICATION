@@ -28,7 +28,7 @@ public class InventoryController {
     }
     @GetMapping("/inventory_by_product/{product}")
     public ResponseEntity<List<Inventory>> searchInventoryByProduct(@PathVariable Product product) {
-        return inventoryService.getInventoryByProduct(product.getProduct_id());
+        return inventoryService.getInventoryByProduct(product.getId());
     }
     @PostMapping("/post_inventory")
     public ResponseEntity<Inventory> postNewInventory(@RequestBody int stockQuantity, @RequestBody Long product_id) {

@@ -40,7 +40,7 @@ public class InventoryService {
         inventory.setStockQuantity(stockQuantity);
         inventory.setRemainingQuantity(stockQuantity);
         inventory.setStatus(Status.AVAILABLE_IN_STOCK);
-        inventory.setProduct(product.getProduct_id());
+        inventory.setProduct(product);
         return new ResponseEntity<>(inventoryRepository.save(inventory), HttpStatus.CREATED);
     }
 
@@ -69,9 +69,6 @@ public class InventoryService {
             if (inventory.getRemainingQuantity() >= itemQuantity) {
                 inventory.setRemainingQuantity((int) (inventory.getRemainingQuantity() - itemQuantity));
 
-                if (inventory.getRemainingQuantity() == 10 && inventory.getRemainingQuantity() == 5) {
-                    inventory.setStatus(Status.LOW_STOCK);
-                }
                 if (inventory.getRemainingQuantity() == 0) {
                     inventory.setStatus(Status.OUT_OF_STOCK);
                 }
