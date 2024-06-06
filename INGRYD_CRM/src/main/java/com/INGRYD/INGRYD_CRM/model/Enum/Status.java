@@ -7,5 +7,5 @@ public enum Status {
     AVAILABLE_IN_STOCK,
     LOW_STOCK,
     OUT_OF_STOCK,
-    NOT_AVAILABLE
+    VERY_LOW_STOCK
 }

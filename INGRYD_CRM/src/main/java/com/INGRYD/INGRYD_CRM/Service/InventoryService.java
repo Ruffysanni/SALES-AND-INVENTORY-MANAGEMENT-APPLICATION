@@ -1,4 +1,4 @@
-package com.INGRYD.INGRYD_CRM.service;
+package com.INGRYD.INGRYD_CRM.Service;
 
 import com.INGRYD.INGRYD_CRM.exception.InsufficientStockException;
 import com.INGRYD.INGRYD_CRM.model.Enum.Status;
@@ -6,7 +6,6 @@ import com.INGRYD.INGRYD_CRM.model.Inventory;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.InventoryRepository;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,19 +20,19 @@ public class InventoryService {
     public InventoryService(InventoryRepository inventoryRepository) {
         this.inventoryRepository = inventoryRepository;
     }
-
+//    This gets all the inventories
     public ResponseEntity<List<Inventory>> getAllInventories() {
         return new ResponseEntity<>(inventoryRepository.findAll(), HttpStatus.OK);
     }
-
+//   This gets inventory by id
     public ResponseEntity<Inventory> getInventoryById(long id) {
         return new ResponseEntity<>(inventoryRepository.findById(id).orElseThrow(), HttpStatus.OK);
     }
-
+// This gets the inventory by product
     public ResponseEntity<List<Inventory>> getInventoryByProduct(Product product) {
         return new ResponseEntity<>(inventoryRepository.findByProduct(product.getProduct_id()), HttpStatus.OK);
     }
-
+//  This creates inventory for each product
     public ResponseEntity<Inventory> createInventory(int stockQuantity, Product product) {
         Inventory inventory = new Inventory();
         inventory.setStockQuantity(stockQuantity);
@@ -42,7 +41,7 @@ public class InventoryService {
         inventory.setProduct(product.getProduct_id());
         return new ResponseEntity<>(inventoryRepository.save(inventory), HttpStatus.CREATED);
     }
-
+// This updates the inventory record of each product
     public ResponseEntity<Inventory> updateInventory(long id, Inventory updatedInventory) {
         Inventory existingInventory = inventoryRepository.findById(id).orElseThrow();
         existingInventory.setStockQuantity(updatedInventory.getStockQuantity());
@@ -50,7 +49,7 @@ public class InventoryService {
         existingInventory.setStatus(Status.AVAILABLE_IN_STOCK);
         return new ResponseEntity<>(inventoryRepository.save(existingInventory), HttpStatus.ACCEPTED);
     }
-
+// This deletes the inventory records of each product
     public ResponseEntity<Inventory> deleteInventory(long id) {
         Inventory deletedInventory = inventoryRepository.findById(id).orElseThrow();
         inventoryRepository.deleteById(id);
@@ -64,18 +63,17 @@ public class InventoryService {
             if (itemQuantity > inventory.getRemainingQuantity()) {
                 int quantityLeft = inventory.getRemainingQuantity();
                 throw new InsufficientStockException(STR."Not enough stock available. Only\{quantityLeft} quantities left.");
-            }
-            if (inventory.getRemainingQuantity() >= itemQuantity) {
+            } else if (inventory.getRemainingQuantity() >= itemQuantity) {
                 inventory.setRemainingQuantity((int) (inventory.getRemainingQuantity() - itemQuantity));
-
-                if (inventory.getRemainingQuantity() == 10 && inventory.getRemainingQuantity() == 5) {
-                    inventory.setStatus(Status.LOW_STOCK);
-                }
-                if (inventory.getRemainingQuantity() == 0) {
-                    inventory.setStatus(Status.OUT_OF_STOCK);
-                }
-                inventoryRepository.save(inventory);
+            } else if (inventory.getRemainingQuantity() <= 10) {
+                inventory.setStatus(Status.LOW_STOCK);
             }
+            else if (inventory.getRemainingQuantity() <= 5) {
+                inventory.setStatus(Status.VERY_LOW_STOCK);
+            } else if (inventory.getRemainingQuantity() == 0) {
+                inventory.setStatus(Status.OUT_OF_STOCK);
+            }
+            inventoryRepository.save(inventory);
         }
         return ResponseEntity.ok("Successful");
     }
