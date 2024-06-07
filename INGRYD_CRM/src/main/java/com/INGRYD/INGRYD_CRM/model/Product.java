@@ -5,7 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
-@Entity(name = "products_table")
+@Entity
+@Table(name = "products_table", schema = "salesgryd")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

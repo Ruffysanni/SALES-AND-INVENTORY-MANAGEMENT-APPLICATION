@@ -4,7 +4,8 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-@Entity(name = "payment_table")
+@Entity
+@Table(name = "payment_table", schema = "salesgryd")
 @Data
 public class Payment {
     @Id

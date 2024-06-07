@@ -1,5 +1,4 @@
 package com.INGRYD.INGRYD_CRM.model;
-
 import com.INGRYD.INGRYD_CRM.model.Enum.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -7,7 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
-@Entity(name = "inventory_table")
+@Entity
+@Table(name = "inventory_table", schema = "salesgryd")
 public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
