@@ -1,6 +1,7 @@
 package com.INGRYD.INGRYD_CRM.controller;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.service.ProductService;
+import jakarta.mail.MessagingException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +26,8 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product postNewProduct(@RequestBody Product product){
-        return productService.postNewProduct(product);
+    public Product postNewProduct(String receiver,@RequestBody Product product) throws MessagingException {
+        return productService.postNewProduct(receiver,product);
     }
 
     @PutMapping("/{productId}")

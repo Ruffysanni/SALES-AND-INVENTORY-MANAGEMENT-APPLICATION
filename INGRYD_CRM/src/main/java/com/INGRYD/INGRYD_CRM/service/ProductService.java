@@ -1,6 +1,8 @@
 package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.ProductRepository;
+import jakarta.mail.MessagingException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,9 +12,11 @@ import java.util.List;
 @Transactional
 public class ProductService {
     final ProductRepository productRepository;
+    final MessageService messageService;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, MessageService messageService) {
         this.productRepository = productRepository;
+        this.messageService = messageService;
     }
 
     public List<Product> getAllProducts(){
@@ -21,7 +25,9 @@ public class ProductService {
     public Product getProductById(Long id){
         return productRepository.findById(id).get();
     }
-    public Product postNewProduct(Product product){
+    @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP,CUSTOMER")
+    public Product postNewProduct(String receiver,Product product) throws MessagingException {
+        messageService.sendNewProductNotification(receiver, STR."This is to notify the arrival of a new product: Product Name: \{product.getProductName()}\nProduct Description: \{product.getDescription()}\nProduct Category: \{product.getCategory()}");
         return productRepository.save(product);
     }
     public Product updateProduct(Product productToUpdate, Long id){

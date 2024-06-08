@@ -1,6 +1,9 @@
 package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.Payment;
+import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.PaymentRepository;
+import jakarta.mail.MessagingException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +17,13 @@ import java.util.Optional;
 public class PaymentService {
 
     private final PaymentRepository paymentRepository;
+    private final MessageService messageService;
+    private final Product product;
 
-    public PaymentService(PaymentRepository paymentRepository) {
+    public PaymentService(PaymentRepository paymentRepository, MessageService messageService, Product product) {
         this.paymentRepository = paymentRepository;
+        this.messageService = messageService;
+        this.product = product;
     }
 
     // Get all Payments
@@ -30,10 +37,11 @@ public class PaymentService {
         Optional<Payment> payment = paymentRepository.findById(id);
         return payment.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());// this is the same as saying if(payment.isEmpty()) {return ResponseEntity.notFound().build();
     }
-
+    @ConditionalOnProperty(value = "notification.role", havingValue = "SALES_REP")
     // Create a new Payment
-    public ResponseEntity<Payment> createPayment(Payment payment) {
+    public ResponseEntity<Payment> createPayment(String receiver,Payment payment) throws MessagingException {
         Payment savedPayment = paymentRepository.save(payment);
+        messageService.sendPaymentNotification(receiver, STR."This is to notify the confirmation of the payment for Product Name: \{product.getProductName()}Product Category: \{product.getCategory()}\nProduct Description: \{product.getDescription()}\nProduct Price: \{product.getPrice()}\nPayment Method: \{payment.getPaymentMethod()}\nPayment Date: \{payment.getPaymentDate()}\nAmount Paid: \{payment.getAmount()}");
         return ResponseEntity.ok(savedPayment);
     }
 

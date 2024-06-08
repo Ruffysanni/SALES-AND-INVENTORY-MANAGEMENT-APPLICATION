@@ -1,6 +1,7 @@
 package com.INGRYD.INGRYD_CRM.controller;
 import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.service.PaymentService;
+import jakarta.mail.MessagingException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
@@ -30,8 +31,8 @@ public class PaymentController {
 
     // Create a new Payment
     @PostMapping
-    public ResponseEntity<Payment> createPayment(@RequestBody Payment payment) {
-        return paymentService.createPayment(payment);
+    public ResponseEntity<Payment> createPayment(String receiver,@RequestBody Payment payment) throws MessagingException {
+        return paymentService.createPayment(receiver,payment);
     }
 
     // Update an existing Payment

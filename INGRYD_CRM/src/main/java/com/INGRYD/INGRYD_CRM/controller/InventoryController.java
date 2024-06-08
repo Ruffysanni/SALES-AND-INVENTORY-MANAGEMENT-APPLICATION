@@ -3,6 +3,8 @@ import com.INGRYD.INGRYD_CRM.repository.ProductRepository;
 import com.INGRYD.INGRYD_CRM.service.InventoryService;
 import com.INGRYD.INGRYD_CRM.model.Inventory;
 import com.INGRYD.INGRYD_CRM.model.Product;
+import jakarta.mail.MessagingException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -11,7 +13,8 @@ import java.util.List;
 @RequestMapping("/api/v1/inventory")
 public class InventoryController {
     private final InventoryService inventoryService;
-    final ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
 
     public InventoryController(InventoryService inventoryService, ProductRepository productRepository) {
         this.inventoryService = inventoryService;
@@ -36,15 +39,16 @@ public class InventoryController {
         return inventoryService.createInventory(stockQuantity, product);
     }
     @PutMapping("/update_inventory/{id}")
-    public ResponseEntity<Inventory> updateInventory(@PathVariable long id, @RequestBody Inventory updatedInventory) {
-        return inventoryService.updateInventory(id, updatedInventory);
+    public ResponseEntity<Inventory> updateInventory(String receiver,@PathVariable long id, @RequestBody Inventory updatedInventory) throws MessagingException {
+        return inventoryService.updateInventory(receiver, id, updatedInventory);
     }
     @DeleteMapping("/delete_inventory/{id}")
     public ResponseEntity<Inventory> deleteInventory(@PathVariable long id) {
         return inventoryService.deleteInventory(id);
     }
     @PostMapping("/inventory_tracking")
-    public ResponseEntity<String> inventoryTracking(@RequestBody Product product, long quantity) {
-        return inventoryService.inventoryTracking(product, quantity);
+    @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP")
+    public ResponseEntity<String> inventoryTracking(String receiver,@RequestBody Product product, long quantity) throws MessagingException {
+        return inventoryService.inventoryTracking(receiver,product, quantity);
     }
 }
