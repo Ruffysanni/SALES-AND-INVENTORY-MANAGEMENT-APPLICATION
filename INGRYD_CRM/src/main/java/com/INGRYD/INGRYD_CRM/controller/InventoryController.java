@@ -39,8 +39,8 @@ public class InventoryController {
         return inventoryService.createInventory(stockQuantity, product);
     }
     @PutMapping("/update_inventory/{id}")
-    public ResponseEntity<Inventory> updateInventory(String receiver,@PathVariable long id, @RequestBody Inventory updatedInventory) throws MessagingException {
-        return inventoryService.updateInventory(receiver, id, updatedInventory);
+    public ResponseEntity<Inventory> updateInventory(@PathVariable long id, @RequestBody Inventory updatedInventory) throws MessagingException {
+        return inventoryService.updateInventory(id, updatedInventory);
     }
     @DeleteMapping("/delete_inventory/{id}")
     public ResponseEntity<Inventory> deleteInventory(@PathVariable long id) {
@@ -48,7 +48,7 @@ public class InventoryController {
     }
     @PostMapping("/inventory_tracking")
     @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP")
-    public ResponseEntity<String> inventoryTracking(String receiver,@RequestBody Product product, long quantity) throws MessagingException {
-        return inventoryService.inventoryTracking(receiver,product, quantity);
+    public ResponseEntity<String> inventoryTracking(@RequestBody Product product, long quantity) throws MessagingException {
+        return inventoryService.inventoryTracking(product);
     }
 }

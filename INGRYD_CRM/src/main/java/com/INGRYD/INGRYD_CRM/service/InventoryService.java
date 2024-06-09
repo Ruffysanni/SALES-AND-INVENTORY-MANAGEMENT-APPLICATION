@@ -1,5 +1,4 @@
 package com.INGRYD.INGRYD_CRM.service;
-import com.INGRYD.INGRYD_CRM.exception.InsufficientStockException;
 import com.INGRYD.INGRYD_CRM.model.Enum.Status;
 import com.INGRYD.INGRYD_CRM.model.Inventory;
 import com.INGRYD.INGRYD_CRM.model.Product;
@@ -53,11 +52,11 @@ public class InventoryService {
     }
     @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP")
 //      This updates the Inventory associated to each product
-    public ResponseEntity<Inventory> updateInventory(String receiver,long id, Inventory updatedInventory) throws MessagingException {
+    public ResponseEntity<Inventory> updateInventory(long id, Inventory updatedInventory) throws MessagingException {
         Inventory existingInventory = inventoryRepository.findById(id).orElseThrow();
         existingInventory.setStockQuantity(updatedInventory.getStockQuantity());
         existingInventory.setRemainingQuantity(updatedInventory.getRemainingQuantity());
-        messageService.sendUpdatesNotification(receiver, STR."This is to notify that \{product.getProductName()} has been updated and currently has\{updatedInventory.getRemainingQuantity()}products available in stock");
+        messageService.sendUpdatesNotification(STR."This is to notify that \{product.getProductName()} has been updated and currently has\{updatedInventory.getRemainingQuantity()}products available in stock");
         existingInventory.setStatus(Status.AVAILABLE_IN_STOCK);
         return new ResponseEntity<>(inventoryRepository.save(existingInventory), HttpStatus.ACCEPTED);
     }
@@ -70,32 +69,25 @@ public class InventoryService {
 
     //  Logics on the Inventory Tracking
     @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP")
-    public ResponseEntity<String> inventoryTracking(String receiver,Product product,long itemQuantity) throws MessagingException {
+    public ResponseEntity<String> inventoryTracking(Product product) throws MessagingException {
         List<Inventory> inventoryRecords = inventoryRepository.findByProduct(product);
         for (Inventory inventory : inventoryRecords) {
-          if (itemQuantity > inventory.getRemainingQuantity()) {
-                int quantityLeft = inventory.getRemainingQuantity();
-                messageService.sendInsufficientStockNotification(receiver, STR."This is to notify that \{product.getProductName()} has insufficient products available in stock with \{inventory.getRemainingQuantity()}product(s) left");
-                throw new InsufficientStockException(STR."Not enough stock available. Only\{quantityLeft} quantities left.");
-            }
-            if (inventory.getRemainingQuantity() >= itemQuantity) {
-                inventory.setRemainingQuantity((int) (inventory.getRemainingQuantity() - itemQuantity));
-                messageService.sendSalesNotification(receiver, STR."This is to notify that \{itemQuantity} items has been sold out from \{product.getProductName()}");
-            }
-             if (inventory.getRemainingQuantity() <= 10) {
-                messageService.sendLowStockNotification(receiver, STR."This is to notify that \{product.getProductName()}is low in stock with \{inventory.getRemainingQuantity()}product(s) left");
-                inventory.setStatus(Status.LOW_STOCK);
-            }
-            if (inventory.getRemainingQuantity() <= 4) {
-                messageService.sendVeryLowStockNotification(receiver, STR."This is to notify that \{product.getProductName()}is low in stock with \{inventory.getRemainingQuantity()}product(s)left");
-                inventory.setStatus(Status.VERY_LOW_STOCK);
-            }
-            if (inventory.getRemainingQuantity() == 0){
-                 messageService.sendOutOfStockNotification(receiver, STR."This is to notify that \{product.getProductName()}is out of stock");
-                inventory.setStatus(Status.OUT_OF_STOCK);
-            }
-            inventoryRepository.save(inventory);
-            }
+
+                if (inventory.getRemainingQuantity() <= 10) {
+                    messageService.sendLowStockNotification(STR."This is to notify that \{product.getProductName()}is low in stock with \{inventory.getRemainingQuantity()}product(s) left");
+                    inventory.setStatus(Status.LOW_STOCK);
+                }
+                if (inventory.getRemainingQuantity() <= 4) {
+                    messageService.sendVeryLowStockNotification(STR."This is to notify that \{product.getProductName()}is low in stock with \{inventory.getRemainingQuantity()}product(s)left");
+                    inventory.setStatus(Status.VERY_LOW_STOCK);
+                }
+                if (inventory.getRemainingQuantity() == 0) {
+                    messageService.sendOutOfStockNotification(STR."This is to notify that \{product.getProductName()}is out of stock");
+                    inventory.setStatus(Status.OUT_OF_STOCK);
+                }
+                inventoryRepository.save(inventory);
+
+        }
         return ResponseEntity.ok("Successful");
     }
 }

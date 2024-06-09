@@ -32,7 +32,7 @@ public class PaymentController {
     // Create a new Payment
     @PostMapping
     public ResponseEntity<Payment> createPayment(String receiver,@RequestBody Payment payment) throws MessagingException {
-        return paymentService.createPayment(receiver,payment);
+        return paymentService.createPayment(payment);
     }
 
     // Update an existing Payment

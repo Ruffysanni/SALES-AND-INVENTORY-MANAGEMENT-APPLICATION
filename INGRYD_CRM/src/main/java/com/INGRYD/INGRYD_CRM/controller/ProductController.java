@@ -26,8 +26,8 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product postNewProduct(String receiver,@RequestBody Product product) throws MessagingException {
-        return productService.postNewProduct(receiver,product);
+    public Product postNewProduct(@RequestBody Product product) throws MessagingException {
+        return productService.postNewProduct(product);
     }
 
     @PutMapping("/{productId}")

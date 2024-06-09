@@ -26,8 +26,8 @@ public class ProductService {
         return productRepository.findById(id).get();
     }
     @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP,CUSTOMER")
-    public Product postNewProduct(String receiver,Product product) throws MessagingException {
-        messageService.sendNewProductNotification(receiver, STR."This is to notify the arrival of a new product: Product Name: \{product.getProductName()}\nProduct Description: \{product.getDescription()}\nProduct Category: \{product.getCategory()}");
+    public Product postNewProduct(Product product) throws MessagingException {
+        messageService.sendNewProductNotification(STR."This is to notify the arrival of a new product: Product Name: \{product.getProductName()}\nProduct Description: \{product.getDescription()}\nProduct Category: \{product.getCategory()}");
         return productRepository.save(product);
     }
     public Product updateProduct(Product productToUpdate, Long id){

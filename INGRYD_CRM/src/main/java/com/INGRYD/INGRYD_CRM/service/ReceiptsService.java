@@ -54,10 +54,10 @@ public class ReceiptsService {
     @Transactional
     @ConditionalOnProperty(value = "notification.role", havingValue = "CUSTOMER")
     public ResponseEntity<Receipt> createReceipt(String receiver,Payment payment) throws IOException, MessagingException {
-        paymentService.createPayment(receiver,payment);
+        paymentService.createPayment(payment);
         Receipt receipt = new Receipt();
         createPDF(receipt);
-        messageService.sendReceiptNotification(receiver, STR."This is a receipt notification for the good bought : Narration: \{receipt.getNarration()}Date: \{receipt.getReceiptDate()}Amount: \{receipt.getAmount()}");
+        messageService.sendReceiptNotification(STR."This is a receipt notification for the good bought : Narration: \{receipt.getNarration()}Date: \{receipt.getReceiptDate()}Amount: \{receipt.getAmount()}");
         Receipt savedReceipt = receiptsRepository.save(receipt);
         return new ResponseEntity<>(savedReceipt, HttpStatus.CREATED);
     }
