@@ -1,6 +1,9 @@
 package com.INGRYD.INGRYD_CRM.controller;
 import com.INGRYD.INGRYD_CRM.model.Item;
 import com.INGRYD.INGRYD_CRM.service.ItemService;
+import jakarta.mail.MessagingException;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
@@ -38,5 +41,8 @@ public class ItemController {
     public void deleteItem(Item item, @PathVariable Long itemId){
         itemService.deleteItem(item, itemId);
     }
-
+@PostMapping("/orderItem")
+    public ResponseEntity<String> orderItem(@RequestBody Item item, @Valid long itemQuantity) throws MessagingException {
+        return itemService.orderItem(item, itemQuantity);
+    }
 }
