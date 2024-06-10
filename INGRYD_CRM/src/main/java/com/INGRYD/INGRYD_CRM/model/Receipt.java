@@ -9,8 +9,8 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Data
-@Entity(name = "receipts_table")
-
+@Entity
+@Table(name = "receipts_table", schema = "salesgryd")
 public class Receipt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
