@@ -34,11 +34,14 @@ public class CustomerController {
     }
 
     //postCustomer
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
 
         return customerService.postCustomer(customer);
     }
+
+
+    //authenticating existing customer
 
 
     //updateCustomer
