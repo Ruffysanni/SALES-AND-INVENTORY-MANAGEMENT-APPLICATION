@@ -1,22 +1,25 @@
 package com.INGRYD.INGRYD_CRM.service;
-
 import com.INGRYD.INGRYD_CRM.model.Item;
 import com.INGRYD.INGRYD_CRM.repository.ItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Transactional
 public class ItemService {
-    @Autowired
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
+
+    public ItemService(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
 
     public List<Item> getAllItems(){
         return itemRepository.findAll();
     }
-    public Item getItemById(Long id){
-        return itemRepository.findById(id).get();
+    public Optional<Item> getItemById(Long id){
+        return itemRepository.findById(id);
     }
     public Item postNewItem(Item item){
         return itemRepository.save(item);
@@ -26,10 +29,8 @@ public class ItemService {
         Item itemFromDb = itemRepository.findById(id).get();
 
         // Update the new item with the existing one
-        if(itemFromDb != null){
-            itemToUpdate.setQuantity(itemFromDb.getQuantity());
-            itemToUpdate.setUnitPrice(itemFromDb.getUnitPrice());
-        }
+        itemToUpdate.setQuantity(itemFromDb.getQuantity());
+        itemToUpdate.setUnitPrice(itemFromDb.getUnitPrice());
         return itemRepository.save(itemToUpdate);
     }
 
@@ -40,5 +41,6 @@ public class ItemService {
         if(itemFromDb != null){
             itemRepository.deleteById(id);
         }
+        //itemRepository.delete(itemFromDb);
     }
 }

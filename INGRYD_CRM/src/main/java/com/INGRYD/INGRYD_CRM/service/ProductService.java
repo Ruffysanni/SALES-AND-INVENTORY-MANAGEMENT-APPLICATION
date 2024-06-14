@@ -1,17 +1,19 @@
 package com.INGRYD.INGRYD_CRM.service;
-
-import com.INGRYD.INGRYD_CRM.model.Item;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ProductService {
-    @Autowired
-    private ProductRepository productRepository;
+    final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public List<Product> getAllProducts(){
         return productRepository.findAll();
@@ -27,12 +29,10 @@ public class ProductService {
         Product productFromDb = productRepository.findById(id).get();
 
         // Update the new item with the existing one
-        if(productFromDb != null){
-            productToUpdate.setProductName(productFromDb.getProductName());
-            productToUpdate.setCategory(productFromDb.getCategory());
-            productToUpdate.setDescription(productFromDb.getDescription());
-            productToUpdate.setPrice(productFromDb.getPrice());
-        }
+        productToUpdate.setProductName(productFromDb.getProductName());
+        productToUpdate.setCategory(productFromDb.getCategory());
+        productToUpdate.setDescription(productFromDb.getDescription());
+        productToUpdate.setPrice(productFromDb.getPrice());
         return productRepository.save(productToUpdate);
     }
 
