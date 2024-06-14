@@ -36,12 +36,12 @@ public class ProductService {
         return productRepository.save(productToUpdate);
     }
 
-    public void deleteProduct(Product product,  Long id){
+    public void deleteProduct( Long id){
         // Check if tem to be update is available in the database
         Product productFromDb = productRepository.findById(id).get();
         // Delete the new item from the repository
         if(productFromDb != null){
-            productRepository.delete(product);
+            productRepository.deleteById(id);
         }
     }
 }

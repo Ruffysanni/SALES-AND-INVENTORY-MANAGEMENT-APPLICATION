@@ -33,12 +33,12 @@ public class ItemService {
         return itemRepository.save(itemToUpdate);
     }
 
-    public void deleteItem(Item item,  Long id){
+    public void deleteItem(Long id){
         // Check if tem to be update is available in the database
         Item itemFromDb = itemRepository.findById(id).get();
         // Delete the new item from the repository
         if(itemFromDb != null){
-            itemRepository.delete(item);
+            itemRepository.deleteById(id);
         }
     }
 }
