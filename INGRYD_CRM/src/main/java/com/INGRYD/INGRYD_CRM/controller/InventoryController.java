@@ -3,6 +3,7 @@ import com.INGRYD.INGRYD_CRM.repository.ProductRepository;
 import com.INGRYD.INGRYD_CRM.service.InventoryService;
 import com.INGRYD.INGRYD_CRM.model.Inventory;
 import com.INGRYD.INGRYD_CRM.model.Product;
+import jakarta.mail.MessagingException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -44,7 +45,7 @@ public class InventoryController {
         return inventoryService.deleteInventory(id);
     }
     @PostMapping("/inventory_tracking")
-    public ResponseEntity<String> inventoryTracking(@RequestBody Product product, long quantity) {
+    public ResponseEntity<String> inventoryTracking(@RequestBody Product product, long quantity) throws MessagingException {
         return inventoryService.inventoryTracking(product, quantity);
     }
 }

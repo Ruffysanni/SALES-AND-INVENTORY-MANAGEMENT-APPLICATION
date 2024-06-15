@@ -3,6 +3,7 @@ package com.INGRYD.INGRYD_CRM.controller;
 import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.model.Receipt;
 import com.INGRYD.INGRYD_CRM.service.ReceiptsService;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +37,7 @@ public class ReceiptsController {
     //Create a new Receipt
     @PostMapping
     @Transactional
-    public ResponseEntity<Receipt> createReceipt (@RequestBody Payment payment) throws IOException {
+    public ResponseEntity<Receipt> createReceipt (@RequestBody Payment payment) throws IOException, MessagingException {
         return receiptsService.createReceipt(payment);
     }
 

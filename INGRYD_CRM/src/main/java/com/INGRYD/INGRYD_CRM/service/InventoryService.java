@@ -1,10 +1,13 @@
 package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.exception.InsufficientStockException;
+import com.INGRYD.INGRYD_CRM.exception.ProductNotFoundException;
 import com.INGRYD.INGRYD_CRM.model.Enum.Status;
 import com.INGRYD.INGRYD_CRM.model.Inventory;
 import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.InventoryRepository;
 import com.INGRYD.INGRYD_CRM.repository.ProductRepository;
+import jakarta.mail.MessagingException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,10 +19,12 @@ import java.util.List;
 public class InventoryService {
     private final InventoryRepository inventoryRepository;
     private final ProductRepository productRepository;
+    private final MessageService messageService;
 
-    public InventoryService(InventoryRepository inventoryRepository, ProductRepository productRepository) {
+    public InventoryService(InventoryRepository inventoryRepository, ProductRepository productRepository, MessageService messageService) {
         this.inventoryRepository = inventoryRepository;
         this.productRepository = productRepository;
+        this.messageService = messageService;
     }
 
     public ResponseEntity<List<Inventory>> getAllInventories() {
@@ -59,23 +64,35 @@ public class InventoryService {
     }
 
     //  Logics on the Inventory Tracking
-    public ResponseEntity<String> inventoryTracking(Product product, long itemQuantity) {
+    @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP")
+    public ResponseEntity<String> inventoryTracking(Product product, long itemQuantity) throws MessagingException {
         List<Inventory> inventoryRecords = inventoryRepository.findByProduct(product);
         for (Inventory inventory : inventoryRecords) {
-            if (itemQuantity > inventory.getRemainingQuantity()) {
-                int quantityLeft = inventory.getRemainingQuantity();
-                throw new InsufficientStockException(STR."Not enough stock available. Only\{quantityLeft} quantities left.");
-            }
-            if (inventory.getRemainingQuantity() >= itemQuantity) {
-                inventory.setRemainingQuantity((int) (inventory.getRemainingQuantity() - itemQuantity));
-
-                if (inventory.getRemainingQuantity() == 0) {
-                    inventory.setStatus(Status.OUT_OF_STOCK);
+            if (inventory != null) {
+                if (itemQuantity > inventory.getRemainingQuantity()) {
+                    int quantityLeft = inventory.getRemainingQuantity();
+                    throw new InsufficientStockException(STR."Not enough stock available. Only\{quantityLeft} quantities left.");
                 }
-                inventoryRepository.save(inventory);
+                if (inventory.getRemainingQuantity() >= itemQuantity) {
+                    inventory.setRemainingQuantity((int) (inventory.getRemainingQuantity() - itemQuantity));
+                    if (inventory.getRemainingQuantity() <= 10) {
+                        messageService.sendLowStockNotification(STR."This is to notify that \{product.getProductName()}is low in stock with \{inventory.getRemainingQuantity()}product(s) left");
+                        inventory.setStatus(Status.LOW_STOCK);
+                    }
+                    if (inventory.getRemainingQuantity() <= 4) {
+                        messageService.sendVeryLowStockNotification(STR."This is to notify that \{product.getProductName()}is low in stock with \{inventory.getRemainingQuantity()}product(s)left");
+                        inventory.setStatus(Status.VERY_LOW_STOCK);
+                    }
+                    if (inventory.getRemainingQuantity() == 0) {
+                        messageService.sendOutOfStockNotification(STR."This is to notify that \{product.getProductName()}is out of stock");
+                        inventory.setStatus(Status.OUT_OF_STOCK);
+                    }
+                    inventoryRepository.save(inventory);
+                }
+            } else {
+                throw new ProductNotFoundException("Product not found in Inventory");
             }
         }
         return ResponseEntity.ok("Successful");
-    }
-
+}
 }

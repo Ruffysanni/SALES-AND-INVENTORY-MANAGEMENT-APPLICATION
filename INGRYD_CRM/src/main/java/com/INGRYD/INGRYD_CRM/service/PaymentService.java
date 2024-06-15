@@ -1,6 +1,9 @@
 package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.Payment;
+import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.PaymentRepository;
+import jakarta.mail.MessagingException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,11 +17,12 @@ import java.util.Optional;
 public class PaymentService {
 
     private final PaymentRepository paymentRepository;
-
-    public PaymentService(PaymentRepository paymentRepository) {
+    private final MessageService messageService;
+    static Product product;
+    public PaymentService(PaymentRepository paymentRepository, MessageService messageService) {
         this.paymentRepository = paymentRepository;
+        this.messageService = messageService;
     }
-
     // Get all Payments
     public ResponseEntity<List<Payment>> getAllPayments() {
         List<Payment> payments = paymentRepository.findAll();
@@ -32,8 +36,10 @@ public class PaymentService {
     }
 
     // Create a new Payment
-    public ResponseEntity<Payment> createPayment(Payment payment) {
+    @ConditionalOnProperty(value = "notification.role", havingValue = "SALES_REP")
+    public ResponseEntity<Payment> createPayment(Payment payment) throws MessagingException {
         Payment savedPayment = paymentRepository.save(payment);
+        messageService.sendPaymentNotification(STR."This is to notify the confirmation of the payment for Product Name: \{product.getProductName()}Product Category: \{product.getCategory()}\nProduct Description: \{product.getDescription()}\nProduct Price: \{product.getPrice()}\nPayment Method: \{payment.getPaymentMethod()}\nPayment Date: \{payment.getPaymentDate()}\nAmount Paid: \{payment.getAmount()}");
         return ResponseEntity.ok(savedPayment);
     }
 
