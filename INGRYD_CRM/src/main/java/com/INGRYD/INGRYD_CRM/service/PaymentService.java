@@ -37,9 +37,9 @@ public class PaymentService {
 
     // Create a new Payment
     @ConditionalOnProperty(value = "notification.role", havingValue = "SALES_REP")
-    public ResponseEntity<Payment> createPayment(Payment payment) throws MessagingException {
+    public ResponseEntity<Payment> createPayment(Payment payment, String receiver) throws MessagingException {
         Payment savedPayment = paymentRepository.save(payment);
-        messageService.sendPaymentNotification(STR."This is to notify the confirmation of the payment for Product Name: \{product.getProductName()}Product Category: \{product.getCategory()}\nProduct Description: \{product.getDescription()}\nProduct Price: \{product.getPrice()}\nPayment Method: \{payment.getPaymentMethod()}\nPayment Date: \{payment.getPaymentDate()}\nAmount Paid: \{payment.getAmount()}");
+        messageService.sendPaymentNotification(STR."This is to notify the confirmation of the payment for Product Name: \{product.getProductName()}Product Category: \{product.getCategory()}\nProduct Description: \{product.getDescription()}\nProduct Price: \{product.getPrice()}\nPayment Method: \{payment.getPaymentMethod()}\nPayment Date: \{payment.getPaymentDate()}\nAmount Paid: \{payment.getAmount()}", receiver);
         return ResponseEntity.ok(savedPayment);
     }
 

@@ -50,10 +50,10 @@ public class MessageService {
         javaMailSender.send(messageHelper.getMimeMessage());
     }
     @Async
-    public void sendInsufficientStockNotification(String message) throws MessagingException {
+    public void sendInsufficientStockNotification(String message, String receiver) throws MessagingException {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "utf-8");
-//        messageHelper.setTo(receiver);
+        messageHelper.setTo(receiver);
         messageHelper.setSubject("Insufficient Stock Alert!");
         messageHelper.setText(message);
 
@@ -69,37 +69,37 @@ public class MessageService {
         javaMailSender.send(messageHelper.getMimeMessage());
     }
     @Async
-    public void sendSalesNotification(String message) throws MessagingException {
+    public void sendSalesNotification(String message, String receiver) throws MessagingException {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "utf-8");
-//        messageHelper.setTo(receiver);
+        messageHelper.setTo(receiver);
         messageHelper.setSubject("Sales Alert!");
         messageHelper.setText(message);
         javaMailSender.send(messageHelper.getMimeMessage());
     }
     @Async
-    public void sendNewProductNotification(String message) throws MessagingException {
+    public void sendNewProductNotification(String message, String receiver) throws MessagingException {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "utf-8");
-//        messageHelper.setTo(receiver);
+        messageHelper.setTo(receiver);
         messageHelper.setSubject("New Product Alert!");
         messageHelper.setText(message);
         javaMailSender.send(messageHelper.getMimeMessage());
     }
     @Async
-    public void sendPaymentNotification(String message) throws MessagingException {
+    public void sendPaymentNotification(String message, String receiver) throws MessagingException {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "utf-8");
-//        messageHelper.setTo(receiver);
+        messageHelper.setTo(receiver);
         messageHelper.setSubject("Payment Alert!");
         messageHelper.setText(message);
         javaMailSender.send(messageHelper.getMimeMessage());
     }
     @Async
-    public void sendReceiptNotification(String message) throws MessagingException {
+    public void sendReceiptNotification(String receiver,String message) throws MessagingException {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "utf-8");
-//        messageHelper.setTo(receiver);
+        messageHelper.setTo(receiver);
         messageHelper.setSubject("Receipt Alert!");
         messageHelper.setText(message);
         javaMailSender.send(messageHelper.getMimeMessage());

@@ -31,8 +31,8 @@ public class ItemController {
         return itemService.postNewItem(item);
     }
     @PostMapping("/order_item")
-    public void orderItem(@RequestBody @Valid List<Item> items) throws MessagingException {
-        itemService.orderItem(items);
+    public void orderItem(@RequestBody @Valid List<Item> items, String receiver) throws MessagingException {
+        itemService.orderItem(items, receiver);
     }
     @PutMapping("/{itemId}")
     public Item updateItem(Item item, @PathVariable Long itemId){

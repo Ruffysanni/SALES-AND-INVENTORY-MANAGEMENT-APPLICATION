@@ -44,12 +44,12 @@ public class ItemService {
         // Delete the new item from the repository
         itemRepository.delete(itemFromDb);
     }
-    public void orderItem(List<Item> items) throws MessagingException {
+    public void orderItem(List<Item> items, String receiver) throws MessagingException {
         for (Item item : items) {
         Product product = item.getProducts();
         long itemQuantity = (long) item.getQuantity();
 
-        inventoryService.inventoryTracking(product, itemQuantity);
+        inventoryService.inventoryTracking(product, itemQuantity, receiver);
     }
 }
 
