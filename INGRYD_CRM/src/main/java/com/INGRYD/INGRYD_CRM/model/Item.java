@@ -67,7 +67,7 @@ public class Item {
     }
 
 
-    public Item(Long item_id, Long sale_id, Long product_id, Double quantity, Double unitPrice, Sales sales, Product product) {
+    public Item(Long item_id, Long sale_id, Long product_id, Double quantity, Double unitPrice, Sales sales, List<Product> product) {
         this.item_id = item_id;
         this.sale_id = sale_id;
         this.product_id = product_id;
@@ -134,7 +134,8 @@ public class Item {
     }
 
     public void setUnitPrice(Double unitPrice) {
-        this.unitPrice = unitPrice;
+        this.unitPrice = unitPrice;}
+
     
 //
 //    public Long getSale_id() {

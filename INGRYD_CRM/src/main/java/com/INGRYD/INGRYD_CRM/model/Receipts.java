@@ -34,8 +34,6 @@ public class Receipts {
     public Receipts() {
     }
 
-    ;
-
 
     public Receipts(Long id, String receiptDate, Double amount, String narration, Sales sales) {
         this.id = id;
@@ -43,13 +41,8 @@ public class Receipts {
         this.amount = amount;
         this.narration = narration;
         this.sales = sales;
-
-    public Receipts(Long id, String receiptDate, Double amount, Sale sale) {
-        this.id = id;
-        this.receiptDate = receiptDate;
-        this.amount = amount;
-        this.sale = sale;
     }
+
 
     public Long getId() {
         return id;
@@ -63,21 +56,21 @@ public class Receipts {
         return amount;
     }
 
-    public String getNarration(){return narration;}
+    public String getNarration() {
+        return narration;
+    }
 
     public Sales getSales() {
         return sales;
-    public Sale getSales() {
-        return sale;
 
-    }
+        }
 
-    @Override
-    public String toString() {
-        return "Receipts{" +
-                "receiptDate='" + receiptDate + '\'' +
-                ", amount=" + amount +
-                ", sale=" + sale +
-                '}';
+        @Override
+        public String toString () {
+            return "Receipts{" +
+                    "receiptDate='" + receiptDate + '\'' +
+                    ", amount=" + amount +
+                    ", sale=" + sale +
+                    '}';
+        }
     }
-}

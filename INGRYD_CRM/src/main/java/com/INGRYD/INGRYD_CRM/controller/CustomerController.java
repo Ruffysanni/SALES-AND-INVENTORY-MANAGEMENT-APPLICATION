@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/customers")
@@ -29,7 +30,7 @@ public class CustomerController {
 
     //getCustomerName
     @GetMapping("/getCustomerName")
-    public ResponseEntity<Customer> getCustomerName(@RequestParam String name) {
+    public ResponseEntity<Optional<Customer>> getCustomerName(@RequestParam String name) {
         return customerService.getCustomerName(name);
     }
 

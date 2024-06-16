@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -27,8 +28,8 @@ public class CustomerService {
         return new ResponseEntity<>(customerRepository.findById(id).get(), HttpStatus.OK);
     }
     //getCustomerName
-    public ResponseEntity<Customer> getCustomerName(String name){
-        return new ResponseEntity<>(customerRepository.findByCustomerName(name), HttpStatus.OK);
+    public ResponseEntity<Optional<Customer>> getCustomerName(String name){
+        return new ResponseEntity<>(customerRepository.findByName(name), HttpStatus.OK);
     }
 
     //postCustomer
