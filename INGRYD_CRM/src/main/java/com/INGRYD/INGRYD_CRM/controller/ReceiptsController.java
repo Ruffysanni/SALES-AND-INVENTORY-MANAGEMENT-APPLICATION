@@ -31,7 +31,7 @@ public class ReceiptsController {
     }
 
     //Create a new Receipt
-    @PostMapping
+    @PostMapping("/receipt")
     @Transactional
     public ResponseEntity<Receipts> createReceipt (@RequestBody Payment payment){
         return receiptsService.createReceipt(payment);
