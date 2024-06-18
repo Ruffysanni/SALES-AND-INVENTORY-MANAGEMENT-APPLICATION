@@ -22,7 +22,12 @@ import java.util.NoSuchElementException;
 public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(InsufficientStockException.class)
-    public String handleConstraintException(InsufficientStockException exception) {
+    public String handleInsufficientStockException(InsufficientStockException exception) {
+        return exception.getMessage();
+    }
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(ProductNotFoundException.class)
+    public String handleProductNotFoundException(ProductNotFoundException exception) {
         return exception.getMessage();
     }
 }

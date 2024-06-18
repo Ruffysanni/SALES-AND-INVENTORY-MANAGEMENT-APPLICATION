@@ -1,6 +1,8 @@
 package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.Item;
+import com.INGRYD.INGRYD_CRM.model.Product;
 import com.INGRYD.INGRYD_CRM.repository.ItemRepository;
+import jakarta.mail.MessagingException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -10,9 +12,11 @@ import java.util.Optional;
 @Transactional
 public class ItemService {
     private final ItemRepository itemRepository;
+    private final InventoryService inventoryService;
 
-    public ItemService(ItemRepository itemRepository) {
+    public ItemService(ItemRepository itemRepository, InventoryService inventoryService) {
         this.itemRepository = itemRepository;
+        this.inventoryService = inventoryService;
     }
 
     public List<Item> getAllItems(){
@@ -40,4 +44,13 @@ public class ItemService {
         // Delete the new item from the repository
         itemRepository.delete(itemFromDb);
     }
+    public void orderItem(List<Item> items, String receiver) throws MessagingException {
+        for (Item item : items) {
+        Product product = item.getProducts();
+        long itemQuantity = (long) item.getQuantity();
+
+        inventoryService.inventoryTracking(product, itemQuantity, receiver);
+    }
+}
+
 }
