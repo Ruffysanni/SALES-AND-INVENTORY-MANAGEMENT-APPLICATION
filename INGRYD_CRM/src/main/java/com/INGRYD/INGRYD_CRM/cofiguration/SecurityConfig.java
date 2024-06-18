@@ -1,4 +1,5 @@
 package com.INGRYD.INGRYD_CRM.cofiguration;
+
 import com.INGRYD.INGRYD_CRM.security.AuthenticationSuccessHandler;
 import com.INGRYD.INGRYD_CRM.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
@@ -17,19 +18,23 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
-    final AuthenticationSuccessHandler authenticationSuccessHandler;
-    final JwtAuthenticationFilter jwtAuthenticationFilter;
-    final UserDetailsService userDetailsService;
-    final AuthenticationProvider authenticationProvider;
 
+    private final AuthenticationSuccessHandler authenticationSuccessHandler;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final UserDetailsService userDetailsService;
+    private final AuthenticationProvider authenticationProvider;
+
+    @Autowired
     public SecurityConfig(AuthenticationSuccessHandler authenticationSuccessHandler,
-                          JwtAuthenticationFilter jwtAuthenticationFilter, UserDetailsService userDetailsService,
-                          AuthenticationProvider authenticationProvider) {
+                          JwtAuthenticationFilter jwtAuthenticationFilter, @Lazy UserDetailsService userDetailsService,
+                          @Lazy AuthenticationProvider authenticationProvider) {
         this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
         this.userDetailsService = userDetailsService;
@@ -57,23 +62,21 @@ public class SecurityConfig {
 
         return http.build();
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    private UserDetailsService userDetailsService() {
-        return userDetailsService;
     }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }

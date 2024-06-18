@@ -5,37 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2561b602-47e0-4258-a9b4-4ba3bbce95a9" name="Changes" comment="created salesgryd schema, and added constraints on each entity">
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/cofiguration/ApplicationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/cofiguration/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/LandingPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Enum/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/UserDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/security/AuthenticationSuccessHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/security/JwtAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/JWTService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/ETC.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/ETC.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/SaleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/SalesRepController.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/controller/SalesRepController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Invoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/Sale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/SalesRep.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/model/SalesRep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/InvoiceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/InvoiceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/SalesRepRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/repository/SalesRepRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/InvoiceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/InvoiceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/SalesRepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/SalesRepService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/cofiguration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/cofiguration/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/logger.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/logger.log.2024-06-05.0.gz" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +61,7 @@
     &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ETC/Desktop/Mag_portfolio/newApp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -109,8 +85,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
       </set>
     </attachedChunks>
   </component>
@@ -141,6 +117,11 @@
       <workItem from="1717768573599" duration="6503000" />
       <workItem from="1717942499295" duration="10400000" />
       <workItem from="1718103997797" duration="19954000" />
+      <workItem from="1718565779195" duration="807000" />
+      <workItem from="1718569344834" duration="532000" />
+      <workItem from="1718570030969" duration="345000" />
+      <workItem from="1718621023764" duration="134000" />
+      <workItem from="1718713316128" duration="2049000" />
     </task>
     <task id="LOCAL-00003" summary="created salesgryd schema, and added constraints on each entity">
       <option name="closed" value="true" />
