@@ -1,8 +1,11 @@
 package com.INGRYD.INGRYD_CRM.model;
+import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -26,6 +29,8 @@ public class Product {
     @ManyToOne
     @JoinColumn (name = "categoryID")
     private Category category;
+
+    private Role roles;
 
 
 }

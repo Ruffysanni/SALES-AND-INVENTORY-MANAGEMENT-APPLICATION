@@ -1,9 +1,10 @@
 package com.INGRYD.INGRYD_CRM.model;
+import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.Data;
-
+import lombok.*;
 import java.util.List;
+
 
 @Entity
 @Table(name = "SalesRep_table", schema = "salesgryd")
@@ -39,5 +40,8 @@ public class SalesRep {
 
     @OneToMany(mappedBy = "salesRep")
     private List<Sale> sales;
+    @Setter
+    @Getter
+    private Role role;
 
 }
