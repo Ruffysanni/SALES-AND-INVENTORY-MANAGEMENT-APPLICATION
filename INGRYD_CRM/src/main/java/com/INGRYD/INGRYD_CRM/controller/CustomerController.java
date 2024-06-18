@@ -7,13 +7,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/customers")
+@RequestMapping("/api/v1/customer")
 @CrossOrigin
 public class CustomerController {
     private final CustomerService customerService;
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
+    }
+
+    @GetMapping("/dashboard")
+    public String customerLandingPage() {
+        return "customer_landing_page";
     }
 
     //Get all Customers

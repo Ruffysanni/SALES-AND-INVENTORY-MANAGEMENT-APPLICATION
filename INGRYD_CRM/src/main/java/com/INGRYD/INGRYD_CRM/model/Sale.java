@@ -1,8 +1,11 @@
 package com.INGRYD.INGRYD_CRM.model;
+import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -41,4 +44,6 @@ public class Sale {
 
     @OneToMany(mappedBy = "sales")
     private List<Receipt> receipts;
+
+    private Role roles;
 }

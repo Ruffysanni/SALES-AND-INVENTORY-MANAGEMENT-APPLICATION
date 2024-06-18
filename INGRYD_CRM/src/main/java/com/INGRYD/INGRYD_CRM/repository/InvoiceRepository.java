@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
     List<Invoice> findByInvoiceDate(LocalDate invoiceDate);
-    List<Invoice> findByDateBetween(@NotNull @NotEmpty LocalDate startDate, LocalDate endDate);
+    List<Invoice> findByInvoiceDateBetween(@NotNull @NotEmpty LocalDate startDate, LocalDate endDate);
 }
