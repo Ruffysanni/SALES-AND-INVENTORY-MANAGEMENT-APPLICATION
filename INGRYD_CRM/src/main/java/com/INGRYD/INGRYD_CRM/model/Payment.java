@@ -1,8 +1,11 @@
 package com.INGRYD.INGRYD_CRM.model;
+import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "payment_table", schema = "salesgryd")
@@ -28,4 +31,6 @@ public class Payment {
     @ManyToOne
     @JoinColumn(name = "salesID")
     private Sale sales;
+
+    private Role roles;
 }

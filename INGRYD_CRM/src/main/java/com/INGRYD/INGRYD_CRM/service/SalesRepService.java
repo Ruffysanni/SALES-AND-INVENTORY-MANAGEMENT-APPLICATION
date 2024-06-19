@@ -1,7 +1,9 @@
 package com.INGRYD.INGRYD_CRM.service;
+import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import com.INGRYD.INGRYD_CRM.model.SalesRep;
 import com.INGRYD.INGRYD_CRM.repository.InvoiceRepository;
 import com.INGRYD.INGRYD_CRM.repository.SalesRepRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,5 +49,15 @@ public class SalesRepService {
 
     public List<SalesRep> listAllSalesReps(){
         return salesRepRepository.findAll();
+    }
+    public List<SalesRep> getSalesRepsByRole(Role role) {
+        return salesRepRepository.findSalesRepByRole(role);
+    }
+    public SalesRep assignRole(Long salesRepId, Role role) {
+        SalesRep salesRep = salesRepRepository.findById(salesRepId)
+                .orElseThrow(() -> new EntityNotFoundException(STR."SalesRep with id \{salesRepId} not found"));
+
+        salesRep.setRole(role);
+        return salesRepRepository.save(salesRep);
     }
 }

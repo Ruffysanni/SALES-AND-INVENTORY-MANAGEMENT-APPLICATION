@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/INGRYD_CRM/INGRYD_CRM.iml" filepath="$PROJECT_DIR$/INGRYD_CRM/INGRYD_CRM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SALES-AND-INVENTORY-MANAGEMENT-APPLICATION.iml" filepath="$PROJECT_DIR$/.idea/SALES-AND-INVENTORY-MANAGEMENT-APPLICATION.iml" />
     </modules>
   </component>
 </project>

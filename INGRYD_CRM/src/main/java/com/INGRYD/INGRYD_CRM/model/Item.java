@@ -1,8 +1,11 @@
 package com.INGRYD.INGRYD_CRM.model;
+import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Data
@@ -15,7 +18,7 @@ public class Item {
 
     @NotBlank
     @NotNull
-    private Double quantity;
+    private double quantity;
 
     @NotBlank
     @NotNull
@@ -25,9 +28,9 @@ public class Item {
     @JoinColumn(name = "salesID")
     private Sale sales;
 
-
     @OneToOne
     @JoinColumn(name = "productID")
     private Product products;
 
+    private Role roles;
 }

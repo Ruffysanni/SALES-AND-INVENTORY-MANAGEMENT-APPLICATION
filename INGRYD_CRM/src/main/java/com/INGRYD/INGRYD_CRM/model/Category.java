@@ -1,8 +1,11 @@
 package com.INGRYD.INGRYD_CRM.model;
+import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -19,5 +22,7 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     private List<Product> product;
+
+    private Role roles;
 
 }

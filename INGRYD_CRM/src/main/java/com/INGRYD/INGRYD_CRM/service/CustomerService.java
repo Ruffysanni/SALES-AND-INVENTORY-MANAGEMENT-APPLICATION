@@ -37,7 +37,7 @@ public class CustomerService {
     public ResponseEntity<Customer> updateCustomer(Long id, Customer replacementDetails){
         Customer customer = customerRepository.findById(id).get();
         customer.setName(replacementDetails.getName());
-        customer.setEmail(replacementDetails.getEmail());
+        customer.setUsername(replacementDetails.getUsername());
         customer.setPhoneNumber(replacementDetails.getPhoneNumber());
         customer.setAddress(replacementDetails.getAddress());
         return new ResponseEntity<>(customerRepository.save(customer), HttpStatus.OK);

@@ -53,7 +53,7 @@ public class SaleController {
     }
 
     //Get all sales by SaleRepId within a specified date range
-    @GetMapping("/salesRep/{saleRepId}/date-range")
+    @GetMapping("/salesRep/{salesRepId}/date-range")
     public ResponseEntity<List<Sale>> getSalesBySalesRepIdAndDateRange(
             @PathVariable Long salesRepId,
             @RequestParam LocalDateTime startDate,

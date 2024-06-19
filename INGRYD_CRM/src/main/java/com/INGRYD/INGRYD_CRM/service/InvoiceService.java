@@ -42,7 +42,7 @@ public class InvoiceService {
         if(startDate.isAfter(endDate)) {
             throw new ServiceException("Start date cannot be after end date");
         }
-        return invoiceRepository.findByDateBetween(startDate,endDate);
+        return invoiceRepository.findByInvoiceDateBetween(startDate,endDate);
     }
     public void deleteInvoice(Long id) {
         if (!invoiceRepository.existsById(id)) {
