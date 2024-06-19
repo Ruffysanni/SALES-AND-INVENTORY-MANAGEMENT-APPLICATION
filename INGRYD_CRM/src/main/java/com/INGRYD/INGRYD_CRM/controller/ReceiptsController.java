@@ -1,5 +1,6 @@
 package com.INGRYD.INGRYD_CRM.controller;
 
+import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.model.Receipts;
 import com.INGRYD.INGRYD_CRM.service.ReceiptsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -26,14 +28,14 @@ public class ReceiptsController {
 
     //Get Receipts by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Receipts> getReceiptById (@PathVariable Long id) {
+    public ResponseEntity<Optional<Receipts>> getReceiptById (@PathVariable Long id) {
         return receiptsService.getReceiptById(id);
     }
 
     //Create a new Receipt
     @PostMapping("/receipt")
     @Transactional
-    public ResponseEntity<Receipts> createReceipt (@RequestBody Payment payment){
+    public ResponseEntity<Receipts> createReceipt (@RequestBody Payment payment)throws IOException {
         return receiptsService.createReceipt(payment);
     }
 

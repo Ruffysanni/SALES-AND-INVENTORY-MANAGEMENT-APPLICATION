@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
+import java.time.LocalDate;
+
 @Entity(name = "receipts_table")
 public class Receipts {
     @Id
@@ -17,7 +19,7 @@ public class Receipts {
     @NotBlank(message = "Receipt date is mandatory")
     @NotNull
     @Temporal(TemporalType.DATE)
-    private String receiptDate;
+    private LocalDate receiptDate;
 
     @NotEmpty
     @NotBlank(message = "amount is mandatory")
@@ -29,13 +31,13 @@ public class Receipts {
 
     @ManyToOne
     @JoinColumn(name = "sales_id")
-    private Sale sale;
+    private Sale sales;
 
     public Receipts() {
     }
 
 
-    public Receipts(Long id, String receiptDate, Double amount, String narration, Sales sales) {
+    public Receipts(Long id, LocalDate receiptDate, Double amount, String narration, Sale sales) {
         this.id = id;
         this.receiptDate = receiptDate;
         this.amount = amount;
@@ -48,7 +50,7 @@ public class Receipts {
         return id;
     }
 
-    public String getReceiptDate() {
+    public LocalDate getReceiptDate() {
         return receiptDate;
     }
 
@@ -60,7 +62,7 @@ public class Receipts {
         return narration;
     }
 
-    public Sales getSales() {
+    public Sale getSales() {
         return sales;
 
         }
@@ -70,7 +72,7 @@ public class Receipts {
             return "Receipts{" +
                     "receiptDate='" + receiptDate + '\'' +
                     ", amount=" + amount +
-                    ", sale=" + sale +
+                    ", sales=" + sales +
                     '}';
         }
     }

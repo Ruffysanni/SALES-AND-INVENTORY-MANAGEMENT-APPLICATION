@@ -1,5 +1,6 @@
 package com.INGRYD.INGRYD_CRM.service;
 
+import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.model.Receipts;
 import com.INGRYD.INGRYD_CRM.repository.ReceiptsRepository;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ReceiptsService {
     /*
      * CRUD
@@ -36,18 +38,18 @@ public class ReceiptsService {
     }
 
     //Get Receipts by ID
-    public ResponseEntity<Receipts> getReceiptById(Long id) {
-        Optional<Receipts> receipt = receiptsRepository.findById(id);
-        if (receipt.isEmpty()) {
-            return new ResponseEntity<>(receiptsRepository.findByReceiptId(id), HttpStatus.NOT_FOUND);
+    public ResponseEntity<Optional<Receipts>> getReceiptById(Long id) {
+        Optional<Receipts> receipts = receiptsRepository.findById(id);
+        if (receipts.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<>(receiptsRepository.findByReceiptId(id), HttpStatus.OK);
+            return new ResponseEntity<>(receipts, HttpStatus.OK);
         }
     }
 
     //Create a new Receipt
     @Transactional
-    public ResponseEntity<Receipts> createReceipt(Payment payment) {
+    public ResponseEntity<Receipts> createReceipt(Payment payment) throws IOException{
         paymentService.createPayment(payment);
         Receipts receipts = new Receipts();
         createPDF(receipts);
