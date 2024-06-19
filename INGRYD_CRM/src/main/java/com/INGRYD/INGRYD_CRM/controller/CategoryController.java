@@ -13,8 +13,7 @@ import java.util.List;
 @RequestMapping("/api/v1/category")
 @CrossOrigin
 public class CategoryController {
-    final
-    CategoryService categoryService;
+    final CategoryService categoryService;
 
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
