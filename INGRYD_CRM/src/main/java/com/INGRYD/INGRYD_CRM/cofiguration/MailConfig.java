@@ -1,4 +1,4 @@
-package com.INGRYD.INGRYD_CRM.config;
+package com.INGRYD.INGRYD_CRM.cofiguration;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
