@@ -1,5 +1,7 @@
 package com.INGRYD.INGRYD_CRM.dto;
 
-public record ReceiptsDTO(Long id, String receiptDate, Double amount, Sales sales) {
+import com.INGRYD.INGRYD_CRM.model.Sale;
+
+public record ReceiptsDTO(Long id, String receiptDate, Double amount, Sale sales) {
 
 }

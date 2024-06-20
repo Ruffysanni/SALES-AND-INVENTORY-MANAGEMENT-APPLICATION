@@ -1,24 +1,26 @@
 package com.INGRYD.INGRYD_CRM.service;
-
 import com.INGRYD.INGRYD_CRM.model.Sale;
+import com.INGRYD.INGRYD_CRM.model.SalesRep;
 import com.INGRYD.INGRYD_CRM.repository.SaleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.INGRYD.INGRYD_CRM.repository.SalesRepRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
+import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class SaleService {
 
     private final SaleRepository saleRepository;
+    private final SalesRepRepository salesRepRepository;
 
-    public SaleService(SaleRepository saleRepository) {
+    public SaleService(SaleRepository saleRepository, SalesRepRepository salesRepRepository) {
         this.saleRepository = saleRepository;
+        this.salesRepRepository = salesRepRepository;
     }
 
     //Get All Sales
@@ -45,7 +47,8 @@ public class SaleService {
             Sale saleToUpdate = sale.get();
             saleToUpdate.setSaleDate(saleDetails.getSaleDate());
             saleToUpdate.setTotalAmount(saleDetails.getTotalAmount());
-            saleToUpdate.setSaleRepId(saleDetails.getSaleRepId());
+            SalesRep salesRep = salesRepRepository.findById(saleDetails.getSalesRep().getId()).orElseThrow();
+            saleToUpdate.setSalesRep(salesRep);
             Sale updatedSale = saleRepository.save(saleToUpdate);
             return ResponseEntity.ok(updatedSale);
         } else {
@@ -71,8 +74,8 @@ public class SaleService {
     }
 
     //Get all sales by SaleRepId within a specified date range
-    public ResponseEntity<List<Sale>> getSalesBySaleRepIdAndDateRange(String saleRepId, LocalDateTime startDate, LocalDateTime endDate) {
-        List<Sale> sale = saleRepository.findBySaleRepIdAndSaleDateBetween(saleRepId, startDate, endDate);
+    public ResponseEntity<List<Sale>> getSalesBySaleRepIdAndDateRange(Long salesRepId, LocalDateTime startDate, LocalDateTime endDate) {
+        List<Sale> sale = saleRepository.findBySalesRepIdAndSaleDateBetween(salesRepId, startDate, endDate);
         return ResponseEntity.ok(sale);
     }
 }

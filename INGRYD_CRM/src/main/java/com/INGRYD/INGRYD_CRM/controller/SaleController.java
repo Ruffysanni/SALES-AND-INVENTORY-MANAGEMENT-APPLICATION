@@ -1,9 +1,6 @@
 package com.INGRYD.INGRYD_CRM.controller;
-
-
 import com.INGRYD.INGRYD_CRM.model.Sale;
 import com.INGRYD.INGRYD_CRM.service.SaleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
@@ -13,8 +10,11 @@ import java.util.List;
 @RequestMapping("/api/v1/sales")
 public class SaleController {
 
-    @Autowired
-    private SaleService saleService;
+    private final SaleService saleService;
+
+    public SaleController(SaleService saleService) {
+        this.saleService = saleService;
+    }
 
     //Get All Sales
     @GetMapping("/all")
@@ -53,12 +53,12 @@ public class SaleController {
     }
 
     //Get all sales by SaleRepId within a specified date range
-    @GetMapping("/salesRep/{saleRepId}/date-range")
-    public ResponseEntity<List<Sale>> getSalesBySaleRepIdAndDateRange(
-            @PathVariable String saleRepId,
+    @GetMapping("/salesRep/{salesRepId}/date-range")
+    public ResponseEntity<List<Sale>> getSalesBySalesRepIdAndDateRange(
+            @PathVariable Long salesRepId,
             @RequestParam LocalDateTime startDate,
             @RequestParam LocalDateTime endDate) {
-        return saleService.getSalesBySaleRepIdAndDateRange(saleRepId, startDate, endDate);
+        return saleService.getSalesBySaleRepIdAndDateRange(salesRepId, startDate, endDate);
     }
 
 }

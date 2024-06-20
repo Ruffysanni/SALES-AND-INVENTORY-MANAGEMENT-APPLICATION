@@ -4,9 +4,7 @@ import com.INGRYD.INGRYD_CRM.repository.InvoiceRepository;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -44,7 +42,7 @@ public class InvoiceService {
         if(startDate.isAfter(endDate)) {
             throw new ServiceException("Start date cannot be after end date");
         }
-        return invoiceRepository.findByDateBetween(startDate,endDate);
+        return invoiceRepository.findByInvoiceDateBetween(startDate,endDate);
     }
     public void deleteInvoice(Long id) {
         if (!invoiceRepository.existsById(id)) {
