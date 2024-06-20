@@ -18,7 +18,7 @@ public class Item {
 
     @NotBlank
     @NotNull
-    private Double quantity;
+    private double quantity;
 
     @NotBlank
     @NotNull

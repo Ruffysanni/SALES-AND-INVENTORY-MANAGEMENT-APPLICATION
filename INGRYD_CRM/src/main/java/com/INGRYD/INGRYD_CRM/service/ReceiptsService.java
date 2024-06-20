@@ -2,11 +2,13 @@ package com.INGRYD.INGRYD_CRM.service;
 import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.model.Receipt;
 import com.INGRYD.INGRYD_CRM.repository.ReceiptsRepository;
+import jakarta.mail.MessagingException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -25,10 +27,12 @@ public class ReceiptsService {
      * */
     private final ReceiptsRepository receiptsRepository;
     private final PaymentService paymentService;
+    private final MessageService messageService;
 
-    public ReceiptsService(ReceiptsRepository receiptsRepository, PaymentService paymentService) {
+    public ReceiptsService(ReceiptsRepository receiptsRepository, PaymentService paymentService, MessageService messageService) {
         this.receiptsRepository = receiptsRepository;
         this.paymentService = paymentService;
+        this.messageService = messageService;
     }
 
     //Get all Receipts
@@ -48,11 +52,12 @@ public class ReceiptsService {
 
     //Create a new Receipt
     @Transactional
-    public ResponseEntity<Receipt> createReceipt(Payment payment) throws IOException {
-        paymentService.createPayment(payment);
+    @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP,CUSTOMER")
+    public ResponseEntity<Receipt> createReceipt(Payment payment, String receiver) throws IOException, MessagingException {
+        paymentService.createPayment(payment, receiver);
         Receipt receipt = new Receipt();
         createPDF(receipt);
-
+        messageService.sendReceiptNotification(STR."This is a receipt notification for the good bought : Narration: \{receipt.getNarration()}Date: \{receipt.getReceiptDate()}Amount: \{receipt.getAmount()}", receiver);
         Receipt savedReceipt = receiptsRepository.save(receipt);
         return new ResponseEntity<>(savedReceipt, HttpStatus.CREATED);
     }

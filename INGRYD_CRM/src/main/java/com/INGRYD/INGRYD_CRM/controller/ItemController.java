@@ -1,6 +1,8 @@
 package com.INGRYD.INGRYD_CRM.controller;
 import com.INGRYD.INGRYD_CRM.model.Item;
 import com.INGRYD.INGRYD_CRM.service.ItemService;
+import jakarta.mail.MessagingException;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +30,10 @@ public class ItemController {
     public Item postNewItem(Item item){
         return itemService.postNewItem(item);
     }
-
+    @PostMapping("/order_item")
+    public void orderItem(@RequestBody @Valid List<Item> items, String receiver) throws MessagingException {
+        itemService.orderItem(items, receiver);
+    }
     @PutMapping("/{itemId}")
     public Item updateItem(Item item, @PathVariable Long itemId){
         return itemService.updateItem(item, itemId);
