@@ -49,9 +49,9 @@ public class ReceiptsService {
 
     //Create a new Receipt
     @Transactional
-    public ResponseEntity<Receipts> createReceipt(Payment payment) throws IOException{
+    public ResponseEntity<Receipts> createReceipt(Receipts receipts,Payment payment) throws IOException{
         paymentService.createPayment(payment);
-        Receipts receipts = new Receipts();
+
         createPDF(receipts);
 
         Receipts savedReceipt = receiptsRepository.save(receipts);
@@ -65,13 +65,13 @@ public class ReceiptsService {
 
         try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
 
-            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.valueOf("Helvetica-Bold")), 12);
+            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
             contentStream.beginText();
             contentStream.newLineAtOffset(25, 700);
             contentStream.showText("Receipt Details");
             contentStream.endText();
 
-            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.valueOf("Helvetica")), 12);
+            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
             contentStream.beginText();
             contentStream.newLineAtOffset(25, 650);
             contentStream.showText("Amount: " + receipts.getAmount());

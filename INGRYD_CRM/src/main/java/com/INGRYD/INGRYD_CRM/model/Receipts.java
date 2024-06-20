@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -15,16 +16,13 @@ public class Receipts {
     @Column(name = "receipt_id")
     private Long id;
 
-    @NotEmpty
-    @NotBlank(message = "Receipt date is mandatory")
-    @NotNull
+
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate receiptDate;
 
-    @NotEmpty
-    @NotBlank(message = "amount is mandatory")
-    @NotNull
-    @Positive(message = "Amount due must be positive")
+
+    @Column(nullable = false)
     private Double amount;
 
     private String narration;

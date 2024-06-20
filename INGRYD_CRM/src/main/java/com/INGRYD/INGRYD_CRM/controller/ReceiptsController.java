@@ -35,8 +35,8 @@ public class ReceiptsController {
     //Create a new Receipt
     @PostMapping("/receipt")
     @Transactional
-    public ResponseEntity<Receipts> createReceipt (@RequestBody Payment payment)throws IOException {
-        return receiptsService.createReceipt(payment);
+    public ResponseEntity<Receipts> createReceipt (@RequestBody Receipts receipts, Payment payment)throws IOException {
+        return receiptsService.createReceipt(receipts,payment);
     }
 
     //Get Receipts by Date Range
