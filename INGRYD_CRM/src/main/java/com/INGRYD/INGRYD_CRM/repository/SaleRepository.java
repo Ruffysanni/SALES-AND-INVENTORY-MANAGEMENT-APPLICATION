@@ -1,10 +1,7 @@
 package com.INGRYD.INGRYD_CRM.repository;
-
 import com.INGRYD.INGRYD_CRM.model.Sale;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -15,7 +12,7 @@ public interface SaleRepository extends JpaRepository <Sale, Long> {
     List<Sale> findBySaleDateBetween(LocalDateTime startDate, LocalDateTime endDate);
 
     //This query method find all sales by salesId and salesRepId within a specified date range
-    List<Sale> findBySaleRepIdAndSaleDateBetween(String saleRepId, LocalDateTime startDate, LocalDateTime endDate);
+    List<Sale> findBySalesRepIdAndSaleDateBetween(Long salesRepId, LocalDateTime startDate, LocalDateTime endDate);
 
 }
 

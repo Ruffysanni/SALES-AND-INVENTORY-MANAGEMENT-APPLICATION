@@ -1,14 +1,14 @@
 package com.INGRYD.INGRYD_CRM.controller;
+import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import com.INGRYD.INGRYD_CRM.model.SalesRep;
 import com.INGRYD.INGRYD_CRM.repository.SalesRepRepository;
 import com.INGRYD.INGRYD_CRM.service.SalesRepService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/SalesRep")
+@RequestMapping("/api/v1/salesRep")
 @CrossOrigin
 public class SalesRepController {
 // Autowire Sales Representatives Repository,and Sales Representatives Service
@@ -18,6 +18,11 @@ public class SalesRepController {
     public SalesRepController(SalesRepService salesRepService,SalesRepRepository salesRepRepository) {
         this.salesRepService = salesRepService;
         this.SalesRepRepository = salesRepRepository;
+    }
+
+    @GetMapping("/dashboard")
+    public String salesRepLandingPage() {
+        return "SalesRep_landing_page";
     }
 // Post mapping to create a new Sales Representative
     @PostMapping("/create")
@@ -43,5 +48,13 @@ public class SalesRepController {
     @GetMapping("/details/{id}")
     public Optional<SalesRep> salesRepDetails(@PathVariable long id){
         return salesRepService.getSalesRepDetails(id);
+    }
+    @GetMapping("/listByRole/{role}")
+    public List<SalesRep> getSalesRepsByRole(@PathVariable Role role) {
+        return salesRepService.getSalesRepsByRole(role);
+    }
+    @PutMapping("/{salesRepId}/assignRole/{role}")
+    public SalesRep assignRoleToSalesRep(@PathVariable Long salesRepId, @PathVariable Role role) {
+        return salesRepService.assignRole(salesRepId, role);
     }
 }

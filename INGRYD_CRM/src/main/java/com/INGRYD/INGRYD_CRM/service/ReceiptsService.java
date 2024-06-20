@@ -1,19 +1,18 @@
 package com.INGRYD.INGRYD_CRM.service;
-
 import com.INGRYD.INGRYD_CRM.model.Payment;
-import com.INGRYD.INGRYD_CRM.model.Receipts;
+import com.INGRYD.INGRYD_CRM.model.Receipt;
 import com.INGRYD.INGRYD_CRM.repository.ReceiptsRepository;
+import jakarta.mail.MessagingException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -26,57 +25,62 @@ public class ReceiptsService {
      * CRUD
      *
      * */
-    @Autowired
-    private ReceiptsRepository receiptsRepository;
+    private final ReceiptsRepository receiptsRepository;
+    private final PaymentService paymentService;
+    private final MessageService messageService;
 
-    @Autowired
-    private PaymentService paymentService;
+    public ReceiptsService(ReceiptsRepository receiptsRepository, PaymentService paymentService, MessageService messageService) {
+        this.receiptsRepository = receiptsRepository;
+        this.paymentService = paymentService;
+        this.messageService = messageService;
+    }
 
     //Get all Receipts
-    public ResponseEntity<List<Receipts>> getAllReceipts() {
+    public ResponseEntity<List<Receipt>> getAllReceipts() {
         return new ResponseEntity<>(receiptsRepository.findAll(), HttpStatus.OK);
     }
 
-    //Get Receipts by ID
-    public ResponseEntity<Optional<Receipts>> getReceiptById(Long id) {
-        Optional<Receipts> receipts = receiptsRepository.findById(id);
-        if (receipts.isEmpty()) {
+    // Get Receipts by ID
+    public ResponseEntity<Receipt> getReceiptById(Long id) {
+        Optional<Receipt> receipt = receiptsRepository.findById(id);
+        if (receipt.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            return new ResponseEntity<>(receipts, HttpStatus.OK);
+            return new ResponseEntity<>(receipt.get(), HttpStatus.OK);
         }
     }
 
     //Create a new Receipt
     @Transactional
-    public ResponseEntity<Receipts> createReceipt(Receipts receipts,Payment payment) throws IOException{
-        paymentService.createPayment(payment);
-
-        createPDF(receipts);
-
-        Receipts savedReceipt = receiptsRepository.save(receipts);
+    @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP,CUSTOMER")
+    public ResponseEntity<Receipt> createReceipt(Payment payment, String receiver) throws IOException, MessagingException {
+        paymentService.createPayment(payment, receiver);
+        Receipt receipt = new Receipt();
+        createPDF(receipt);
+        messageService.sendReceiptNotification(STR."This is a receipt notification for the good bought : Narration: \{receipt.getNarration()}Date: \{receipt.getReceiptDate()}Amount: \{receipt.getAmount()}", receiver);
+        Receipt savedReceipt = receiptsRepository.save(receipt);
         return new ResponseEntity<>(savedReceipt, HttpStatus.CREATED);
     }
 
-    private void createPDF(Receipts receipts) throws IOException{
+    private void createPDF(Receipt receipt) throws IOException{
         PDDocument document = new PDDocument();
         PDPage page = new PDPage();
         document.addPage(page);
 
         try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
 
-            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
+            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.valueOf("Helvetica-Bold")), 12);
             contentStream.beginText();
             contentStream.newLineAtOffset(25, 700);
             contentStream.showText("Receipt Details");
             contentStream.endText();
 
-            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA), 12);
+            contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.valueOf("Helvetica")), 12);
             contentStream.beginText();
             contentStream.newLineAtOffset(25, 650);
-            contentStream.showText("Amount: " + receipts.getAmount());
+            contentStream.showText(STR."Amount: \{receipt.getAmount()}");
             contentStream.newLine();
-            contentStream.showText("Narration: " + receipts.getNarration());
+            contentStream.showText(STR."Narration: \{receipt.getNarration()}");
             contentStream.endText();
         }
 
@@ -85,8 +89,8 @@ public class ReceiptsService {
     }
 
     //Get Receipts by Date Range
-    public ResponseEntity<List<Receipts>> getReceiptsByDateRange(LocalDate startDate, LocalDate endDate) {
-        List<Receipts> receipts = receiptsRepository.findByReceiptDateBetween(startDate, endDate);
+    public ResponseEntity<List<Receipt>> getReceiptsByDateRange(LocalDate startDate, LocalDate endDate) {
+        List<Receipt> receipts = receiptsRepository.findByReceiptDateBetween(startDate, endDate);
         return new ResponseEntity<>(receipts, HttpStatus.OK);
     }
 

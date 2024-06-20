@@ -1,25 +1,25 @@
 package com.INGRYD.INGRYD_CRM.model;
+import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.Data;
-
+import lombok.*;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
-@Table
+@Table(name = "invoice_table", schema = "salesgryd")
 @Data
 public class Invoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "Sales_Id")
+    @Column (name = "invoiceID")
     private long id;
-
-    private LocalDate date;
 
     @NotEmpty
     @NotNull
@@ -37,70 +37,10 @@ public class Invoice {
     @Temporal(TemporalType.DATE)
     private LocalDate dueDate;
 
-    // create constructors
+    @ManyToOne
+    @JoinColumn(name = "salesID")
+    private Sale sales;
 
-    public Invoice(long id,LocalDate date, LocalDate invoiceDate, double amountDue, LocalDate dueDate) {
-        this.id = id;
-        this.invoiceDate = invoiceDate;
-        this.amountDue = amountDue;
-        this.dueDate = dueDate;
-        this.date = invoiceDate;
-    }
+    private Role roles;
 
-    public Invoice() {
-
-    }
-
-
-    // create getters and setters
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public LocalDate getInvoiceDate() {
-        return invoiceDate;
-    }
-
-    public void setInvoiceDate(LocalDate invoiceDate) {
-        this.invoiceDate = invoiceDate;
-    }
-
-    public double getAmountDue() {
-        return amountDue;
-    }
-
-    public void setAmountDue(double amountDue) {
-        this.amountDue = amountDue;
-    }
-
-    public LocalDate getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate invoiceDate) {
-        this.date = invoiceDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Invoice{" +
-                "id=" + id +
-                ", date=" + invoiceDate +
-                ", invoiceDate=" + invoiceDate +
-                ", amountDue=" + amountDue +
-                ", dueDate=" + dueDate +
-                '}';
-    }
 }
