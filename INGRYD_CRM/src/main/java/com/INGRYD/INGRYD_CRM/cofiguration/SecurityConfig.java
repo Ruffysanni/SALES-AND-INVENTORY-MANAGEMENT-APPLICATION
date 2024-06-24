@@ -1,5 +1,4 @@
 package com.INGRYD.INGRYD_CRM.cofiguration;
-
 import com.INGRYD.INGRYD_CRM.security.AuthenticationSuccessHandler;
 import com.INGRYD.INGRYD_CRM.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
