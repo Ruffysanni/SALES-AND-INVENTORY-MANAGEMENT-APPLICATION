@@ -1,42 +1,109 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  background-color: #f8f9fa;
+  color: #12102E;
+  font-family: 'Poppins', sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.navbar {
+  background-color: #12102E;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-brand {
+  color: #f8f9fa;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.nav-link {
+  color: #f8f9fa;
 }
 
-.card {
-  padding: 2em;
+.nav-item .nav-link:hover {
+  color: #EA418E;
 }
 
-.read-the-docs {
-  color: #888;
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.card-container {
+  background: #f8f9fa;
+  color: #12102E;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.card-title {
+  color: #12102E;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.form-style {
+  padding: 13px 20px;
+  padding-left: 55px;
+  height: 48px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #12102E;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px 2px 0px rgba(10, 10, 10, 0.1);
+}
+
+.form-style:focus {
+  border: 1px solid #EA418E;
+}
+
+.input-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 18px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 24px;
+  color: #EA418E;
+}
+
+.btn-primary {
+  background-color: #EA418E;
+  border-color: #EA418E;
+}
+
+.btn-primary:hover {
+  background-color: #12102E;
+  border-color: #12102E;
+}
+
+.btn-primary:focus {
+  box-shadow: none;
+}
+
+.forgot-password-link {
+  color: #EA418E;
+}
+
+.forgot-password-link:hover {
+  color: #12102E;
+  text-decoration: none;
 }
