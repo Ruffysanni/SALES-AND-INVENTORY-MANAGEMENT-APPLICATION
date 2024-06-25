@@ -1,0 +1,16 @@
+Index: INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Service/InventoryService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Service/InventoryService.java b/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/InventoryService.java
+rename from INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Service/InventoryService.java
+rename to INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/InventoryService.java
+--- a/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/Service/InventoryService.java	
++++ b/INGRYD_CRM/src/main/java/com/INGRYD/INGRYD_CRM/service/InventoryService.java	
+@@ -1,4 +1,4 @@
+-package com.INGRYD.INGRYD_CRM.Service;
++package com.INGRYD.INGRYD_CRM.service;
+ 
+ import com.INGRYD.INGRYD_CRM.exception.InsufficientStockException;
+ import com.INGRYD.INGRYD_CRM.model.Enum.Status;
