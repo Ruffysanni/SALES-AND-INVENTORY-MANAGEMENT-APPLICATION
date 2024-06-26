@@ -13,7 +13,8 @@ import java.util.Collection;
 
     @Component
     public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
-        public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+                                            Authentication authentication) throws IOException, ServletException {
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             boolean isAdmin = authorities.stream()
                     .anyMatch(g -> g.getAuthority().equals("ROLE_ADMIN"));

@@ -1,5 +1,4 @@
 package com.INGRYD.INGRYD_CRM;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
