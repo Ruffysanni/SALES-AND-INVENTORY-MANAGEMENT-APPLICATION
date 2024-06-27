@@ -39,6 +39,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/home/**",
@@ -49,14 +50,12 @@ public class SecurityConfig {
                                 "/v2/api-docs",
                                 "/swagger-resources/**",
                                 "/webjars/**")
-                        .permitAll()
-                        .requestMatchers("/api/v1/login").permitAll()
+                        .permitAll()  // Allow public access to these URLs
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/customer/**").hasRole("CUSTOMER")
                         .requestMatchers("/salesRep/**").hasRole("SALES_REP")
                         .requestMatchers("/salesManager/**").hasRole("SALES_MANAGER")
                         .anyRequest().authenticated())
-                .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(form -> form
                         .loginPage("/api/v1/login")
                         .successHandler(authenticationSuccessHandler)
@@ -67,6 +66,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

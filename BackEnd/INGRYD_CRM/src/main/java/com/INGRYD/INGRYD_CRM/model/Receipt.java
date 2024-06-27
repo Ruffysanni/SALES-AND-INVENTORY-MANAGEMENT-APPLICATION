@@ -35,7 +35,4 @@ public class Receipt {
     @ManyToOne
     @JoinColumn(name = "salesID")
     private Sale sales;
-
-    private Role roles;
-
 }

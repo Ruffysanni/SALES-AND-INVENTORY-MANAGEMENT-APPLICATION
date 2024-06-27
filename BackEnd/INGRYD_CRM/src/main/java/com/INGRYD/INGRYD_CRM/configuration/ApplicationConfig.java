@@ -1,4 +1,4 @@
-package com.INGRYD.INGRYD_CRM.cofiguration;
+package com.INGRYD.INGRYD_CRM.configuration;
 import com.INGRYD.INGRYD_CRM.model.Customer;
 import com.INGRYD.INGRYD_CRM.model.SalesRep;
 import com.INGRYD.INGRYD_CRM.repository.CustomerRepository;

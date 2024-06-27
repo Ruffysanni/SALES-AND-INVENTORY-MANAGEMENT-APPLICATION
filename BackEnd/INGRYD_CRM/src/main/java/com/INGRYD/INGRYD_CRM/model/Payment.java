@@ -32,5 +32,4 @@ public class Payment {
     @JoinColumn(name = "salesID")
     private Sale sales;
 
-    private Role roles;
 }

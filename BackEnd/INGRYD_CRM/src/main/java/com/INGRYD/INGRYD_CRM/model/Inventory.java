@@ -30,7 +30,4 @@ public class Inventory {
     private int remainingQuantity;
     @Enumerated(EnumType.STRING)
     private Status status;
-
-    private Role roles;
-
 }

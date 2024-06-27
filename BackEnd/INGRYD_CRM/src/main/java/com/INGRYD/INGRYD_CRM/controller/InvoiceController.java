@@ -1,10 +1,15 @@
 package com.INGRYD.INGRYD_CRM.controller;
+import com.INGRYD.INGRYD_CRM.model.Customer;
 import com.INGRYD.INGRYD_CRM.model.Invoice;
+import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.repository.InvoiceRepository;
 import com.INGRYD.INGRYD_CRM.service.InvoiceService;
+import jakarta.mail.MessagingException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,8 +27,8 @@ public class InvoiceController {
     }
 // Post mapping to create a new invoice
     @PostMapping("/create")
-    public Invoice createInvoice(@RequestBody Invoice invoice) {
-        return invoiceService.createInvoice(invoice);
+    public Invoice createInvoice(@RequestBody Payment payment, @RequestBody Customer customer) throws MessagingException, IOException {
+        return invoiceService.createInvoice(payment,customer);
     }
 // Put mapping to edit the details of an invoice
     @PutMapping("/edit/{id}")
@@ -45,8 +50,8 @@ public class InvoiceController {
     }
 // Get mapping to fetch details of an invoice
     @GetMapping("/details/{id}")
-    public Invoice getInvoiceDetails(@PathVariable long id){
-        return invoiceService.getInvoiceDetails(id);
+    public Invoice getInvoiceById(@PathVariable long id){
+        return invoiceService.getInvoiceDetailsById(id);
     }
 // Get mapping to fetch invoices by date range
     @GetMapping("/find-by-date-range")

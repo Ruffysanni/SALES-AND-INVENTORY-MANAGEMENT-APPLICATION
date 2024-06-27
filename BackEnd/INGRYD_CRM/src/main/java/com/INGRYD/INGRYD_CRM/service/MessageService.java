@@ -105,6 +105,16 @@ public class MessageService {
         javaMailSender.send(messageHelper.getMimeMessage());
     }
 
+    @Async
+    public void sendInvoiceNotification(String receiver,String message) throws MessagingException {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "utf-8");
+        messageHelper.setTo(receiver);
+        messageHelper.setSubject("Invoice Alert!");
+        messageHelper.setText(message);
+        javaMailSender.send(messageHelper.getMimeMessage());
+    }
+
 }
 
 

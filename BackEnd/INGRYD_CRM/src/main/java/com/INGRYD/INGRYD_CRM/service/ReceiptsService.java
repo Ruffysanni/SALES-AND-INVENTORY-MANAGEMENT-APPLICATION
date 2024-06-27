@@ -43,11 +43,7 @@ public class ReceiptsService {
     // Get Receipts by ID
     public ResponseEntity<Receipt> getReceiptById(Long id) {
         Optional<Receipt> receipt = receiptsRepository.findById(id);
-        if (receipt.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(receipt.get(), HttpStatus.OK);
-        }
+        return receipt.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     //Create a new Receipt
@@ -57,7 +53,8 @@ public class ReceiptsService {
         paymentService.createPayment(payment, receiver);
         Receipt receipt = new Receipt();
         createPDF(receipt);
-        messageService.sendReceiptNotification(STR."This is a receipt notification for the good bought : Narration: \{receipt.getNarration()}Date: \{receipt.getReceiptDate()}Amount: \{receipt.getAmount()}", receiver);
+        messageService.sendReceiptNotification
+                (STR."This is a receipt notification for the good bought : Narration:\{receipt.getNarration()}Date: \{receipt.getReceiptDate()}Amount: \{receipt.getAmount()}", receiver);
         Receipt savedReceipt = receiptsRepository.save(receipt);
         return new ResponseEntity<>(savedReceipt, HttpStatus.CREATED);
     }

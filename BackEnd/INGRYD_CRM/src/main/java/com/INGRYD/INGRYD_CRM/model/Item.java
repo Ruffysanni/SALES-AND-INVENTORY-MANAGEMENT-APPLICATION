@@ -32,5 +32,4 @@ public class Item {
     @JoinColumn(name = "productID")
     private Product products;
 
-    private Role roles;
 }

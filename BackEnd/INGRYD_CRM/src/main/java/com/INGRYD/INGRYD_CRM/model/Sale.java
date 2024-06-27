@@ -44,6 +44,4 @@ public class Sale {
 
     @OneToMany(mappedBy = "sales")
     private List<Receipt> receipts;
-
-    private Role roles;
 }

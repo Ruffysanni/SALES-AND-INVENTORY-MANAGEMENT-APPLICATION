@@ -48,7 +48,6 @@ public class ItemService {
         for (Item item : items) {
         Product product = item.getProducts();
         long itemQuantity = (long) item.getQuantity();
-
         inventoryService.inventoryTracking(product, itemQuantity, receiver);
     }
 }

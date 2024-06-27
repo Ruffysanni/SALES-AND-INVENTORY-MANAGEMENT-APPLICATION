@@ -30,7 +30,6 @@ public class Product {
     @JoinColumn (name = "categoryID")
     private Category category;
 
-    private Role roles;
 
 
 }
