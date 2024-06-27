@@ -38,8 +38,9 @@ public class SalesRep {
             message = "Password must contain at least one lowercase, one uppercase, one digit, one special character, and be between 8 and 13 characters long")
     private String password;
 
-    @OneToMany(mappedBy = "salesRep")
+    @OneToMany(mappedBy = "salesRep",cascade = CascadeType.ALL)
     private List<Sale> sales;
+
     @Setter
     @Getter
     private Role role;

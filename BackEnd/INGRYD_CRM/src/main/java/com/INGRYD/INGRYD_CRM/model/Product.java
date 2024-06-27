@@ -26,10 +26,9 @@ public class Product {
     @NotBlank
     private Double price;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn (name = "categoryID")
     private Category category;
-
 
 
 }

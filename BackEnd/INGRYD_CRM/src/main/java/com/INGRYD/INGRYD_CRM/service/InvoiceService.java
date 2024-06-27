@@ -33,7 +33,7 @@ public class InvoiceService {
 
     @Transactional
     @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP,CUSTOMER")
-    public Invoice createInvoice(Payment payment, Customer customer) throws IOException, MessagingException {
+    public Invoice createInvoice(Payment payment, String customer) throws IOException, MessagingException {
         paymentService.createPayment(payment, String.valueOf(customer));
 
         Invoice invoice = new Invoice();

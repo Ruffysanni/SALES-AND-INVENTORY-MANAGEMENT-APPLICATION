@@ -18,10 +18,13 @@ public class PaymentService {
 
     private final PaymentRepository paymentRepository;
     private final MessageService messageService;
+
+
     static Product product;
     public PaymentService(PaymentRepository paymentRepository, MessageService messageService) {
         this.paymentRepository = paymentRepository;
         this.messageService = messageService;
+
     }
     // Get all Payments
     public ResponseEntity<List<Payment>> getAllPayments() {
@@ -37,9 +40,9 @@ public class PaymentService {
 
     // Create a new Payment
     @ConditionalOnProperty(value = "notification.role", havingValue = "SALES_REP")
-    public ResponseEntity<Payment> createPayment(Payment payment, String receiver) throws MessagingException {
+    public ResponseEntity<Payment> createPayment(Payment payment, String customer) throws MessagingException {
         Payment savedPayment = paymentRepository.save(payment);
-        messageService.sendPaymentNotification(STR."This is to notify the confirmation of the payment for Product Name: \{product.getProductName()}Product Category: \{product.getCategory()}\nProduct Description: \{product.getDescription()}\nProduct Price: \{product.getPrice()}\nPayment Method: \{payment.getPaymentMethod()}\nPayment Date: \{payment.getPaymentDate()}\nAmount Paid: \{payment.getAmount()}", receiver);
+        messageService.sendPaymentNotification(STR."This is to notify the confirmation of the payment for Product Name: \{product.getProductName()}Product Category: \{product.getCategory()}\nProduct Description: \{product.getDescription()}\nProduct Price: \{product.getPrice()}\nPayment Method: \{payment.getPaymentMethod()}\nPayment Date: \{payment.getPaymentDate()}\nAmount Paid: \{payment.getAmount()}", String.valueOf(customer));
         return ResponseEntity.ok(savedPayment);
     }
 
@@ -50,7 +53,7 @@ public class PaymentService {
             paymentToUpdate.setPaymentDate(paymentDetails.getPaymentDate());
             paymentToUpdate.setAmount(paymentDetails.getAmount());
             paymentToUpdate.setPaymentMethod(paymentDetails.getPaymentMethod());
-            paymentToUpdate.setSaleId(paymentDetails.getSaleId());
+            paymentToUpdate.setSales(paymentDetails.getSales()); // Update Sale entity if necessary
             Payment updatedPayment = paymentRepository.save(paymentToUpdate);
             return ResponseEntity.ok(updatedPayment);
         } else {

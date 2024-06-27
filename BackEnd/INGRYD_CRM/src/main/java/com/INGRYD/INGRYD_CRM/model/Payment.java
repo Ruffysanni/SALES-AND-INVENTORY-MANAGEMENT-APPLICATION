@@ -25,10 +25,7 @@ public class Payment {
     @Column(nullable = false)
     private String paymentMethod;
 
-    @Column(nullable = false)
-    private Long saleId;
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "salesID")
     private Sale sales;
 

@@ -24,11 +24,11 @@ public class Item {
     @NotNull
     private Double unitPrice;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "salesID")
     private Sale sales;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "productID")
     private Product products;
 

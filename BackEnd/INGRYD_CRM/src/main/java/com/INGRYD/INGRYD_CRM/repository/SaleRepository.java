@@ -14,5 +14,7 @@ public interface SaleRepository extends JpaRepository <Sale, Long> {
     //This query method find all sales by salesId and salesRepId within a specified date range
     List<Sale> findBySalesRepIdAndSaleDateBetween(Long salesRepId, LocalDateTime startDate, LocalDateTime endDate);
 
+    Sale findById(long id);
+
 }
 

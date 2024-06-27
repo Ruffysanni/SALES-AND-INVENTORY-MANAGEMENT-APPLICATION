@@ -17,7 +17,7 @@ public class Inventory {
     @Column(name = "inventoryID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "productID")
     private Product product;
 

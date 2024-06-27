@@ -1,5 +1,6 @@
 package com.INGRYD.INGRYD_CRM.controller;
 
+import com.INGRYD.INGRYD_CRM.model.Customer;
 import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.model.Receipt;
 import com.INGRYD.INGRYD_CRM.service.ReceiptsService;
@@ -35,10 +36,10 @@ public class ReceiptsController {
     }
 
     //Create a new Receipt
-    @PostMapping
+    @PostMapping("/create")
     @Transactional
-    public ResponseEntity<Receipt> createReceipt (@RequestBody Payment payment, String receiver) throws IOException, MessagingException {
-        return receiptsService.createReceipt(payment, receiver);
+    public ResponseEntity<Receipt> createReceipt (@RequestBody Payment payment, Customer customer) throws IOException, MessagingException {
+        return receiptsService.createReceipt(payment, customer);
     }
 
     //Get Receipts by Date Range

@@ -1,4 +1,5 @@
 package com.INGRYD.INGRYD_CRM.controller;
+import com.INGRYD.INGRYD_CRM.model.Customer;
 import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.service.PaymentService;
 import jakarta.mail.MessagingException;
@@ -30,9 +31,9 @@ public class PaymentController {
     }
 
     // Create a new Payment
-    @PostMapping
-    public ResponseEntity<Payment> createPayment(@RequestBody Payment payment, String receiver) throws MessagingException {
-        return paymentService.createPayment(payment,receiver);
+    @PostMapping("/create")
+    public ResponseEntity<Payment> createPayment(@RequestBody Payment payment, Customer customer) throws MessagingException {
+        return paymentService.createPayment(payment, String.valueOf(customer));
     }
 
     // Update an existing Payment

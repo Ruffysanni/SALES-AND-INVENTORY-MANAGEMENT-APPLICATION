@@ -36,7 +36,7 @@ public class Invoice {
     @Temporal(TemporalType.DATE)
     private LocalDate dueDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "salesID")
     private Sale sales;
 

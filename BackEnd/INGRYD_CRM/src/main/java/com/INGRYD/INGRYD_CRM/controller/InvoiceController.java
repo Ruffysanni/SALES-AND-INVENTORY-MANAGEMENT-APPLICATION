@@ -28,7 +28,7 @@ public class InvoiceController {
 // Post mapping to create a new invoice
     @PostMapping("/create")
     public Invoice createInvoice(@RequestBody Payment payment, @RequestBody Customer customer) throws MessagingException, IOException {
-        return invoiceService.createInvoice(payment,customer);
+        return invoiceService.createInvoice(payment, String.valueOf(customer));
     }
 // Put mapping to edit the details of an invoice
     @PutMapping("/edit/{id}")

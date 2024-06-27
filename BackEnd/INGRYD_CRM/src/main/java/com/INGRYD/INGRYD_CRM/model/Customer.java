@@ -3,8 +3,7 @@ import com.INGRYD.INGRYD_CRM.model.Enum.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
-import java.util.HashSet;
-import java.util.Set;
+
 
 
 @Data
@@ -18,7 +17,7 @@ public class Customer {
 
     @NotBlank(message = "Name is mandatory")
     @NotEmpty
-    @Null
+    @NotNull
     @Size(min = 2, max = 100, message = "Name must be more than 2, and less than 100 characters")
     private String name;
 
@@ -38,14 +37,14 @@ public class Customer {
     private String password;
 
     @NotEmpty
-    @NotBlank(message = "phone number is mandatory")
     @NotNull
-    @Pattern(regexp = "^\\\\+234(80|70|90|81)\\\\d{8}$|^(080|070|090|081)\\\\d{8}$",
-            message = "Invalid phone number format, phone number must start with +2380, 23481,23470,23490 or 080,081,070,090")
+    @NotBlank(message = "phone number is mandatory")
+    @Pattern(regexp = "^\\+234(80|70|90|81)\\d{8}$|^(080|070|090|081)\\d{8}$",
+            message = "Invalid phone number format, phone number must start with +23480,23481,23470,23490 or 080,081,070,090")
     private String phoneNumber;
 
     @NotBlank
-    @Null
+    @NotNull
     @Size(min = 3, max = 100, message = "Address must be more than 2, and less than 100 characters")
     private String address;
 

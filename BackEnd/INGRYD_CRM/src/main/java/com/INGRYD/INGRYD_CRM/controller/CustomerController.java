@@ -40,9 +40,8 @@ public class CustomerController {
     }
 
     //postCustomer
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
-
         return customerService.postCustomer(customer);
     }
 

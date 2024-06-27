@@ -1,5 +1,6 @@
 package com.INGRYD.INGRYD_CRM.model;
 import com.INGRYD.INGRYD_CRM.model.Enum.Role;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
@@ -24,24 +25,29 @@ public class Sale {
     @Column(nullable = false)
     private Double totalAmount;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customerID")
     private Customer customer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "salesRepID")
+
     private SalesRep salesRep;
 
-    @OneToMany(mappedBy = "sales")
+    @OneToMany(mappedBy = "sales",cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("sales")
     private List<Item> items;
 
 
-    @OneToMany(mappedBy = "sales")
+    @OneToMany(mappedBy = "sales",cascade = CascadeType.ALL)
+
     private List<Payment> payments;
 
-    @OneToMany(mappedBy = "sales")
+    @OneToMany(mappedBy = "sales",cascade = CascadeType.ALL)
+
     private List<Invoice> invoices;
 
-    @OneToMany(mappedBy = "sales")
+    @OneToMany(mappedBy = "sales",cascade = CascadeType.ALL)
+
     private List<Receipt> receipts;
 }

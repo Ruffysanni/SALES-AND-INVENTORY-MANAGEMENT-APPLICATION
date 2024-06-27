@@ -29,7 +29,7 @@ public class SaleController {
     }
 
     //Create a new Sale
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Sale> createSale(@RequestBody Sale sale) {
         return saleService.createSale(sale);
     }

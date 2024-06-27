@@ -1,4 +1,5 @@
 package com.INGRYD.INGRYD_CRM.service;
+import com.INGRYD.INGRYD_CRM.model.Customer;
 import com.INGRYD.INGRYD_CRM.model.Payment;
 import com.INGRYD.INGRYD_CRM.model.Receipt;
 import com.INGRYD.INGRYD_CRM.repository.ReceiptsRepository;
@@ -49,12 +50,12 @@ public class ReceiptsService {
     //Create a new Receipt
     @Transactional
     @ConditionalOnProperty(value = "notification.role", havingValue = "ADMIN,SALES_REP,CUSTOMER")
-    public ResponseEntity<Receipt> createReceipt(Payment payment, String receiver) throws IOException, MessagingException {
-        paymentService.createPayment(payment, receiver);
+    public ResponseEntity<Receipt> createReceipt(Payment payment, Customer customer) throws IOException, MessagingException {
+        paymentService.createPayment(payment, String.valueOf(customer));
         Receipt receipt = new Receipt();
         createPDF(receipt);
         messageService.sendReceiptNotification
-                (STR."This is a receipt notification for the good bought : Narration:\{receipt.getNarration()}Date: \{receipt.getReceiptDate()}Amount: \{receipt.getAmount()}", receiver);
+                (STR."This is a receipt notification for the good bought : Narration:\{receipt.getNarration()}Date: \{receipt.getReceiptDate()}Amount: \{receipt.getAmount()}", String.valueOf(customer));
         Receipt savedReceipt = receiptsRepository.save(receipt);
         return new ResponseEntity<>(savedReceipt, HttpStatus.CREATED);
     }
